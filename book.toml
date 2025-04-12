@@ -1,0 +1,6 @@
+[book]
+authors = ["Steve Corbett"]
+language = "en"
+multilingual = false
+src = "src"
+title = "The swing-extras book"
