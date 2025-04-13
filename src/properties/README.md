@@ -21,14 +21,14 @@ However, there are some drawbacks:
   - That means, if you want to store some custom type, you have to handle conversion to/from `String`
 - this means that the simple API actually works against you (you have to write custom code here)
 
-## java.prefs.Preferences
+## java.util.prefs.Preferences
 
-The built-in `java.util.Preferences` seems at first glance as though it solves the problems
+The built-in `java.util.prefs.Preferences` seems at first glance as though it solves the problems
 presented by the `java.util.Properties` class:
 - primitive types, such as `boolean`, `int`, `float`, and `double` are wrapped
 - can write to a "user node" (negates the need to manually pick a file save location)
 
-For example, to use `java.util.Preferences`:
+For example, to use `java.util.prefs.Preferences`:
 
 ```java
 Preferences prefs = Preferences.userNodeForPackage(ca.corbett.Example.class);
@@ -47,7 +47,7 @@ On my system (linux-based), this automatically creates a file:
 ```
 
 The nice part about this is that it was very easy for us to use, and also that we didn't have to
-worry about selecting a save location - this is done automatically for us by `java.util.Preferences`.
+worry about selecting a save location - this is done automatically for us by `java.util.prefs.Preferences`.
 The not-so-nice part about this is that the exact location of the output varies from system to system,
 and on some systems, may not even be stored in a file at all, but rather in some other OS-supplied
 storage mechanism, such as a system registry. This can make troubleshooting difficult, and also makes
