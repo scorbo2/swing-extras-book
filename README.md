@@ -7,7 +7,7 @@ This is current as of the 2.0.0 release of `swing-extras`.
 
 ## You can view this online!
 
-The generate version of this documentation is viewable online:
+The generated version of this documentation is viewable online:
 
 <a href="http://www.corbett.ca/swing-extras-book/">http://www.corbett.ca/swing-extras-book/</a>
 
