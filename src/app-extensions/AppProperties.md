@@ -45,12 +45,15 @@ the properties dialog and the extension manager dialog very simple:
 
 ```java
 // Show the application properties dialog:
-myAppProps.showPropertiesDialog(MainWindow.getInstance());
+if (myAppProps.showPropertiesDialog(MainWindow.getInstance())) {
+    // User okayed the properties dialog...
+    // reload our UI to reflect the new property values
+}
 
 // Show the extension manager:
 if (myAppProps.showExtensionDialog(MainWindow.getInstance())) {
-    // User okayed the dialog with changes...
-    // That means we have to reload our UI to show/hide controls as needed!
+    // User okayed the extension manager dialog...
+    // reload our UI to show/hide extension-related options
 }
 ```
 

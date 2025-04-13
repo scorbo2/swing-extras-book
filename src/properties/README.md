@@ -1,6 +1,6 @@
 # Properties handling
 
-For the purposes of this documentation "properties" refers to any kind of name/value pair of data
+For the purposes of this documentation, "properties" refers to any kind of name/value pair of data
 that you wish to persist in your application. This could be application settings, user preferences,
 application state (window size and position, etc) that you wish to automatically load and use on
 the next startup, and so on. Java provides some built-in ways of solving this problem, but as we'll
@@ -71,8 +71,9 @@ First, let's say hello to the `ca.corbett.extras.properties.Properties` class. I
 - the `FileBasedProperties` subclass can handle reading/writing to a file
 - keeps all related properties in the same place.
 - tightly integrates with `swing-forms` for generating form fields
+- is extensible by design, so you can build your own custom property types
 
-If it ended there, this would be a pretty underwhelming offering. But wait, there's more!
+If it ended there, this would be a somewhat underwhelming offering. But wait, there's more!
 
 ### PropertiesManager and PropertiesDialog
 

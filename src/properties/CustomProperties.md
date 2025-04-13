@@ -10,5 +10,6 @@ property might be able to make use of an existing `FormField` in the same way.
 
 In order to implement the `saveToProps()` and `loadFromProps()` successfully, though, it's 
 vitally important to understand how and why properties are given a `fullyQualifiedName`.
+
 And that is an excellent segue to talk about the most powerful feature of the
 `ca.corbett.extras.properties` package... 

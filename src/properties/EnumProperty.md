@@ -15,7 +15,7 @@ comboProperty = new ComboProperty("fieldname", "Choose:", options, 0, false);
 
 There are several problems with this approach:
 - I have to write boilerplate code to get all the values out of the enum
-- By using `toString()` to load the value into the combo, I have to parse the String value that comes out.
+- By using `toString()` to load the value into the combo, I have to parse the String value that comes out of the combo box.
 - If the `toString()` changes over time (or gets localized to another language), my properties file breaks.
 
 Alternatively, I could use `value.name()` instead of `value.toString()` to populate the combo box, but 

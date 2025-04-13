@@ -7,6 +7,8 @@ since around 2012, but was not publicly available until 2025. This documentation
 that `swing-extras` offers that allow you to quickly and easily add useful functionality to your Java Swing
 applications.
 
+**This guide covers version 2.0.0 of swing-extras from 2025-04-13** 
+
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
 

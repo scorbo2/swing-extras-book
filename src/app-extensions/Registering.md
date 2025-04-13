@@ -41,7 +41,11 @@ The `loadExtensions` method takes some parameters to help it find jar files that
 for this application. Specifically, we have to pass in the class of our `AppExtension`
 implementation. We also provide an application name and version. This is so that extension
 manager can weed out extension jars that target some other application, or extension jars
-that target the wrong version of this application.
+that target the wrong version of this application. This is the "compatibility" check that
+we mentioned earlier. The `ExtensionManager` is smart enough (with the help of this `extInfo.json`
+file supplied by each extension jar) to know which jars can be loaded and which cannot.
+If an extension jar does not package an `extInfo.json` file in its resources, it will
+not be considered for loading.
 
 On startup, we now see that our application has registered and our menu
 item appears:

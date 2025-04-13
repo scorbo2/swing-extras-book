@@ -21,6 +21,7 @@
   - [AppProperties](app-extensions/AppProperties.md)
 - [Image handling](images/README.md)
   - [ImageUtil](images/ImageUtil.md)
+  - [ImagePanel](images/ImagePanel.md)
   - [ImageTextUtil](images/ImageTextUtil.md)
   - [Gradients](images/Gradients.md)
   - [LogoGenerator](images/LogoGenerator.md)

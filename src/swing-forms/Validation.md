@@ -14,7 +14,7 @@ very easily. First, let's use the built-in validation rule to tell the TextField
 to not allow blank values:
 
 ```java
-TextField textField = new TextField("Label:", 15, 1, false);
+TextField textField = new TextField("Can't be blank:", 15, 1, false);
 ```
 
 Note that we have set the final constructor parameter to false, meaning that we
