@@ -3,6 +3,7 @@
 [Introduction](./introduction.md)
 
 - [swing-forms](swing-forms/README.md)
+  - [Form basics](swing-forms/Basics.md)
   - [Form validation](swing-forms/Validation.md)
   - [Form field actions](swing-forms/Actions.md)
   - [Custom form fields](swing-forms/CustomFields.md)

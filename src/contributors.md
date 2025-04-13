@@ -4,3 +4,5 @@
 
 Email: <a href="mailto:steve@corbett.ca">steve@corbett.ca</a>
 
+This documentation was generated with [mdbook](https://rust-lang.github.io/mdBook/index.html) (not my project), which
+is amazingly easy to use.
