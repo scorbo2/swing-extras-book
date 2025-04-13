@@ -16,6 +16,7 @@
 - [app-extensions](app-extensions/README.md)
   - [General design](app-extensions/GeneralDesign.md)
   - [ExtensionManager](app-extensions/ExtensionManager.md)
+  - [Registering extensions](app-extensions/Registering.md)
   - [ExtensionManagerDialog](app-extensions/ExtensionManagerDialog.md)
   - [AppProperties](app-extensions/AppProperties.md)
 - [Image handling](images/README.md)

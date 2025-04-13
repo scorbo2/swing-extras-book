@@ -30,7 +30,7 @@ At the time of this writing, `2.0.0` is the latest version. You can verify the l
 version on the GitHub project page:
 - <https://github.com/scorbo2/swing-extras>
 - [Browse the javadocs online](http://www.corbett.ca/swing-extras-javadocs/)
-- [Version history](https://github.com/scorbo2/swing-extras/blob/master/src/main/resources/swing-extras/releaseNotes.txt)
+- [Version history and release notes](https://github.com/scorbo2/swing-extras/blob/master/src/main/resources/swing-extras/releaseNotes.txt)
 
 
 ## License
