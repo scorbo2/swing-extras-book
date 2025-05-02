@@ -7,7 +7,7 @@ since around 2012, but was not publicly available until 2025. This documentation
 that `swing-extras` offers that allow you to quickly and easily add useful functionality to your Java Swing
 applications.
 
-**This guide covers version 2.0.0 of swing-extras from 2025-04-13** 
+**This guide covers version 2.1.0 of swing-extras from TODO release date of 2.1.0** 
 
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
@@ -23,12 +23,12 @@ components of `swing-extras`:
   <dependency>
     <groupId>ca.corbett</groupId>
     <artifactId>swing-extras</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
   </dependency>
 </dependencies>
 ```
 
-At the time of this writing, `2.0.0` is the latest version. You can verify the latest available
+At the time of this writing, `2.1.0` is the latest version. You can verify the latest available
 version on the GitHub project page:
 - <https://github.com/scorbo2/swing-extras>
 - [Browse the javadocs online](http://www.corbett.ca/swing-extras-javadocs/)
