@@ -3,7 +3,7 @@
 ## What is this?
 
 This is the source for the documentation guide for my [swing-extras](https://github.com/scorbo2/swing-extras) library.
-This is current as of the 2.0.0 release of `swing-extras`.
+This is current as of the 2.1.0 release of `swing-extras`.
 
 ## You can view this online!
 
