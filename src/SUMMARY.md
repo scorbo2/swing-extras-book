@@ -29,6 +29,7 @@
   - [LogConsole](logging/LogConsole.md)
   - [Stopwatch](logging/Stopwatch.md)
 - [Miscellaneous](general/README.md)
+  - [Look and Feel](general/LookAndFeel.md)
   - [AboutPanel](general/AboutPanel.md)
   - [AudioUtil](general/AudioUtil.md)
   - [DesktopPane](general/DesktopPane.md)
