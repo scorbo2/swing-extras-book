@@ -22,6 +22,7 @@
 - [Image handling](images/README.md)
   - [ImageUtil](images/ImageUtil.md)
   - [ImagePanel](images/ImagePanel.md)
+  - [Animated GIFs](images/AnimatedGIFs.md)
   - [ImageTextUtil](images/ImageTextUtil.md)
   - [Gradients](images/Gradients.md)
   - [LogoGenerator](images/LogoGenerator.md)
