@@ -4,7 +4,7 @@ The `ca.corbett.extensions` package contains some powerful classes that you can 
 change the functionality of your application, without changing the code of your application itself.
 
 Because `app-extensions` builds upon both `swing-forms` and the properties handling classes contained
-within `swing-extras`, it is **strongly recommended** that you read the seconds on 
+within `swing-extras`, it is **strongly recommended** that you read the sections on
 [swing-forms](../swing-forms/README.md) and [properties handling](../properties/README.md) first.
 
 ## How does it all work?
