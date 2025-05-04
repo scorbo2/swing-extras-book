@@ -59,7 +59,7 @@ And when we click this new menu item, we see our border dialog comes up:
 Great! Our extension is loaded and the functionality it provides has been added to our application's
 functionality, even without our application code knowing anything at all about the new function!
 We can continue now to add extensions to our application this way, building it up over time until
-it does many more things that it was originally designed to do.
+it does many more things than it was originally designed to do.
 
 ## Your application is a framework
 
