@@ -38,3 +38,47 @@ This gives you the best of both worlds.
 You also have the choice of using the `useNamesInsteadOfLabels` option with `EnumProperty` if you actually
 want to display the enum `name()` instead of its `toString()` in the combo box. The default value is
 to use `toString()` as it is usually the user-friendlier option.
+
+## EnumProperty example
+
+The `swing-extras` demo app contains a quick demo of the `EnumProperty` class. Let's look at the definition of
+our simple example enum:
+
+```java
+public enum TestEnum {
+    VALUE1("This is value 1"),
+    VALUE2("This is value 2"),
+    VALUE3("This is value 3");
+
+    final String label;
+
+    TestEnum(String label) {
+        this.label = label;
+    }
+
+    @Override
+    public String toString() {
+        return label;
+    }
+}
+```
+
+We see a straightforward enum definition with three values, each of which defines a user-friendly label that we
+return in the `toString()` implementation. Now, the demo app can create an instance of `EnumProperty` to handle
+the display and user interaction with this enum:
+
+```java
+new EnumProperty<TestEnum>("Enums.Enums.enumField1", "Choose:", TestEnum.VALUE1);
+```
+
+The result looks like this:
+
+![Enum example 1](enum_example1.png)
+
+We also have the option of using the `useNamesInsteadOfLabels` option if we wish to usee the enum value names
+instead of the `toString` value for some reason. The result of that is shown below:
+
+![Enum example 2](enum_example2.png)
+
+The code is otherwise identical, and your code doesn't ever need to populate the combobox directly, or read
+values from it directly. Your code always deals with instances of your enum, which is much easier!
