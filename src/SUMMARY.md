@@ -36,6 +36,7 @@
   - [DesktopPane](general/DesktopPane.md)
   - [DirTree](general/DirTree.md)
   - [Progress](general/Progress.md)
+  - [MessageUtil](general/MessageUtil.md)
 - [Conclusion](./conclusion.md)
 
 --------------
