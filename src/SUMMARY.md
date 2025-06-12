@@ -21,6 +21,7 @@
   - [AppProperties](app-extensions/AppProperties.md)
   - [Extension load order](app-extensions/ExtensionLoadOrder.md)
   - [Extension versioning](app-extensions/ExtensionVersioning.md)
+  - [Extension resources](app-extensions/ExtensionResources.md)
 - [Image handling](images/README.md)
   - [ImageUtil](images/ImageUtil.md)
   - [ImagePanel](images/ImagePanel.md)
