@@ -22,6 +22,7 @@
   - [Extension load order](app-extensions/ExtensionLoadOrder.md)
   - [Extension versioning](app-extensions/ExtensionVersioning.md)
   - [Extension resources](app-extensions/ExtensionResources.md)
+  - [Sharing extension config](app-extensions/SharingExtensionConfig.md)
 - [Image handling](images/README.md)
   - [ImageUtil](images/ImageUtil.md)
   - [ImagePanel](images/ImagePanel.md)
