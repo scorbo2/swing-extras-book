@@ -20,6 +20,7 @@
   - [ExtensionManagerDialog](app-extensions/ExtensionManagerDialog.md)
   - [AppProperties](app-extensions/AppProperties.md)
   - [Extension load order](app-extensions/ExtensionLoadOrder.md)
+  - [Extension versioning](app-extensions/ExtensionVersioning.md)
 - [Image handling](images/README.md)
   - [ImageUtil](images/ImageUtil.md)
   - [ImagePanel](images/ImagePanel.md)
