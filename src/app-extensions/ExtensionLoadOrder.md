@@ -72,7 +72,7 @@ If the file is not present, load order will revert to the default load order des
 that extensions are being loaded in the expected order. For example:
 
 ```text
-2025-06-11 09:04:54 P.M. [INFO] Extension loaded internally: Important Extension
+2025-06-11 09:04:54 P.M. [INFO] Extension loaded externally: Important Extension
 2025-06-11 09:04:54 P.M. [INFO] Extension loaded externally: Less important extension
 2025-06-11 09:04:54 P.M. [INFO] Extension loaded externally: Really unimportant extension
 ```
