@@ -19,6 +19,7 @@
   - [Registering extensions](app-extensions/Registering.md)
   - [ExtensionManagerDialog](app-extensions/ExtensionManagerDialog.md)
   - [AppProperties](app-extensions/AppProperties.md)
+  - [Extension load order](app-extensions/ExtensionLoadOrder.md)
 - [Image handling](images/README.md)
   - [ImageUtil](images/ImageUtil.md)
   - [ImagePanel](images/ImagePanel.md)
