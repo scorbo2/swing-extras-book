@@ -30,6 +30,7 @@
   - [ImageTextUtil](images/ImageTextUtil.md)
   - [Gradients](images/Gradients.md)
   - [LogoGenerator](images/LogoGenerator.md)
+  - [Animation](images/Animation.md)
 - [Logging utilities](logging/README.md)
   - [LogConsole](logging/LogConsole.md)
   - [Stopwatch](logging/Stopwatch.md)
