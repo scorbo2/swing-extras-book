@@ -7,7 +7,7 @@ For example:
 ```java
 // In our custom extension class:
 @Override
-public List<AbstractProperty> getConfigProperties() {
+protected List<AbstractProperty> createConfigProperties() {
     return List.of(new BooleanProperty("CustomExtension.CustomExtension.fieldName", "My checkbox"));
 }
 ```
@@ -26,11 +26,11 @@ use the same font property? Yes we can!
 The solution is for each extension to specify a property with the same fully qualified name. `ExtensionManager` is
 smart enough to filter out duplicates from the combined list. This means that only one property will be created
 for each unique name, regardless of how many extensions expose that property. To illustrate the above scenario,
-each of our annotation extensions could have the same implementation of `getConfigProperties`:
+each of our annotation extensions could have the same implementation of `createConfigProperties`:
 
 ```java
 @Override
-public List<AbstractProperty> getConfigProperties() {
+protected List<AbstractProperty> createConfigProperties() {
     return List.of(new FontProperty("Annotations.Font.fontSelector", "Annotation font:"));
 }
 ```
