@@ -24,6 +24,20 @@ line of UI code in our application - we get it for free from the `swing-extras` 
 Also, the logic for enabling/disabling extensions is wrapped up in the
 `ExtensionManager` base class, so our derived class simply inherits it.
 
+## Extension types
+
+You may notice in the `ExtensionManagerDialog` that there is a field called `Type`. There
+are three possible values for this field:
+
+- `Application built-in`: these are extensions that are provided by the Application in question. They can be disabled but they cannot be removed from the list.
+- `System extension`: these are dynamically-loaded extensions from jar files located in any read-only directory (e.g. `/opt/YourApplication/extensions`). These are intended to be shared with all users on a given system.
+- `User extension`: these extensions are loaded from jar files in a read/write directory, typically in the users home directory (e.g. `/home/YourUsername/YourApplication/extensions`). These are visible only to the user who owns them.
+
+The application doesn't treat System extensions any differently than User extensions. This information
+is presented in this dialog just for informational purposes. Extension config is stored together with
+application config, so each user on the same system can access the same System extension, each with their
+own configuration. The extension code in swing-extras manages this for you.
+
 ## Custom properties for extensions
 
 What if our extension has many options, and we want to be able to expose those
@@ -31,13 +45,13 @@ options to the user in a friendly way so that they can be persisted? It turns ou
 that the `app-extensions` code builds on the `swing-extras` properties code, which
 does a lot of this for us. We can modify our `ExtensionManager` implementation
 to accommodate this. In fact, one of the methods present in the `AppExtension`
-interface is `getConfigProperties`:
+interface is `createConfigProperties`:
 
 ```java
 public class AddImageBorderExtension implements MyAppExtension {
     
     @Override
-    public List<AbstractProperty> getConfigProperties() {
+    protected List<AbstractProperty> createConfigProperties() {
         // ...
     }
 }
@@ -53,7 +67,7 @@ Let's modify our extension to return some custom config properties:
 public class AddImageBorderExtension implements MyAppExtension {
     
     @Override
-    public List<AbstractProperty> getConfigProperties() {
+    protected List<AbstractProperty> createConfigProperties() {
         List<AbstractProperty> props = new ArrayList<>();
         
         props.add(new ColorProperty("UI.Borders.color", "Default border color:", ColorType.SOLID, Color.RED));
