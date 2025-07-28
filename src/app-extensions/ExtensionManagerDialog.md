@@ -6,7 +6,7 @@ Wouldn't it be nice if we could provide our users with a user-friendly view
 of all loaded extensions, and maybe provide a way to enable and disable them
 at runtime? Well, for that we have `ExtensionManagerDialog`!
 
-!["Extension Manager dialog"](app_extensions_dialog1.jpg "Extension manager dialog")
+!["Extension Manager dialog"](app_extensions_dialog1.png "Extension manager dialog")
 
 When we launch the `ExtensionManagerDialog` from our application code, we can get
 a visual listing of all currently loaded extensions and their metadata. Here,
