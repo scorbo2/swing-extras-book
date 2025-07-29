@@ -13,6 +13,7 @@
   - [Working with enums](properties/EnumProperty.md)
   - [Custom properties](properties/CustomProperties.md)
   - [PropertiesDialog](properties/PropertiesDialog.md)
+  - [Custom form logic](properties/CustomFormLogic.md)
 - [app-extensions](app-extensions/README.md)
   - [General design](app-extensions/GeneralDesign.md)
   - [ExtensionManager](app-extensions/ExtensionManager.md)
