@@ -5,7 +5,7 @@ change the functionality of your application, without changing the code of your 
 
 Because `app-extensions` builds upon both `swing-forms` and the properties handling classes contained
 within `swing-extras`, it is **strongly recommended** that you read the sections on
-[swing-forms](../swing-forms/README.md) and [properties handling](../properties/README.md) first.
+swing-forms and properties handling first.
 
 ## How does it all work?
 
