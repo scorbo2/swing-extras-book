@@ -167,6 +167,38 @@ Triggering a value changed event will allow swing-forms to invoke any custom
 Actions that have been registered on our custom form field. This allows other fields
 to respond if they want to, based on whatever font the user has selected here.
 
+## Controlling visibility
+
+Just for fun, let's wire up a `FontField` to a control that lets us toggle its visibility on or off:
+
+![Visibility1](custom_field_setvisibility1.png "Visibility1")
+
+When we toggle the field to be invisible, we expect the `FontField` will be hidden. Right? Let's try it:
+
+![Visibility2](custom_field_setvisibility2.png "Visibility2")
+
+What happened? It looks like only the field label and the button were hidden, while the example font display
+remained visible! What happened is that we didn't override the `setVisible` method from `FormField`. 
+Let's do that now:
+
+```java
+@Override
+public void setVisible(boolean isVisible) {
+    super.setVisible(isVisible);
+    wrapperPanel.setVisible(isVisible);
+}
+```
+
+The parent class does not know about our `wrapperPanel`, so we have to remember to toggle its visibility
+whenever the field's visibility changes. Let's try it again with this change in place:
+
+![Visibility3](custom_field_setvisibility3.png "Visibility3")
+
+Much better! Another method that you might have to override in your custom `FormField` is the `setEnabled`
+method, for the same reason - if your custom field contains extra controls that the parent class doesn't know
+about, they will not be enabled or disabled when the field is enabled or disabled. In the case of `FontField`,
+we don't have to worry about that, because our sample font display label is read-only and so cannot be disabled.
+
 ## It's not just a documentation example
 
 The `FontField` form field that we've built above is not just a theoretical example that
