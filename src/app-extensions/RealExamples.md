@@ -11,7 +11,9 @@ extensions can provide new fullscreen visualization effects to show while music 
 
 The [Scenery extension](https://github.com/scorbo2/ext-mp-scenery) for MusicPlayer is an interesting example.
 It shows gently scrolling landscape scenery images, with programmable "tour guides" that can appear at configured
-intervals to offer commentary either on the currently playing track, or on the currently shown scenery image.
+intervals to offer commentary either on the currently playing track, or on the currently shown scenery image:
+
+![Scenery](app_extensions_real_example1.jpg "Scenery")
 
 ## ImageViewer
 
