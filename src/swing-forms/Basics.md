@@ -79,7 +79,7 @@ String value = textField.getText();
 
 ### There's an even easier way...
 
-Later, when we discuss [Properties](../properties/README.md), we'll find that there's an even easier
+Later, when we discuss Properties, we'll find that there's an even easier
 way of retrieving the values from submitted forms, without having to talk to the `FormPanel` or
 any of the form fields directly.
 

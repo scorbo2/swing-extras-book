@@ -24,6 +24,7 @@ form field implementations are:
 - Static label fields
 - Number pickers (spinners)
 - Text input fields (single-line and multiline supported)
+- Multi-select list fields
 - Panel fields (for rendering custom stuff)
 
 In the next few sections, we'll take a tour of the features provided by `swing-forms`, and we

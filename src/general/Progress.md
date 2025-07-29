@@ -85,6 +85,17 @@ when the work is complete. The dialog presents a Cancel button which is checked
 every time one of the `fire...` methods is invoked. If the method returns false,
 the user clicked the Cancel button and processing should stop.
 
+### Showing only a single progress bar
+
+Of course, not all tasks have subtasks that require a second progress bar. Sometimes,
+you just want a simple, single-bar progress dialog. To accomplish this, you can create
+a new `SimpleProgressWorker` instead of a `MultiProgressWorker`. The rest of the example
+code above is the same! Just pass your `SimpleProgressWorker` into the `runWorker` method
+as we did in the previous example, and the dialog will reconfigure itself to show
+only one progress bar instead of two:
+
+![SimpleProgressWorker](progress_screenshot3.png "SimpleProgressWorker")
+
 ## SplashProgressWindow
 
 The built-in Java `SplashScreen` class is handy for showing a static image briefly
