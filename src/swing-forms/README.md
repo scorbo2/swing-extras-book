@@ -17,7 +17,7 @@ wrapper classes and hides much of the complexity of using them. Included example
 form field implementations are:
 
 - Checkbox
-- Color picker
+- Color picker (with support for solid colors and for color gradients)
 - Combo box (editable and non-editable variants)
 - File chooser
 - Directory chooser
