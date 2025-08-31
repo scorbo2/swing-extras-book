@@ -8,6 +8,7 @@
   - [Form field actions](swing-forms/Actions.md)
   - [Custom form fields](swing-forms/CustomFields.md)
   - [Help tooltips](swing-forms/HelpTooltips.md)
+  - [List rendering](swing-forms/ListRendering.md)
 - [Properties handling](properties/README.md)
   - [Relation to swing-forms](properties/swing-forms.md)
   - [Working with enums](properties/EnumProperty.md)
