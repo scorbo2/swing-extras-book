@@ -11,9 +11,9 @@ some non-blank value (setting `null` or an empty string will disable the tooltip
 prevent the information icon from appearing).
 
 ```java
-TextField textField = new TextField("Text:", 12, 1, true);
+ShortTextField textField = new ShortTextField("Text:", 12);
 textField.setHelpText("Help icons show up whenever a field has help text");
-panel.addFormField(textField);
+panel.add(textField);
 ```
 
 When the user hovers the mouse over the informational icon, the tooltip appears:
@@ -22,14 +22,26 @@ When the user hovers the mouse over the informational icon, the tooltip appears:
 
 To support this in custom form field implementations, you don't actually have to do
 anything at all, as the code for this is handled by the abstract `FormField` class
-and by the `FormPanel` class (which handles the rendering of the icon). The only
-time your custom code might need to override the default behaviour is if the layout
-of your custom field requires special handling. In that case, you can set the
-`isExtraLabelRenderedByField` to `true` in your custom code. This tells `FormPanel`
-not to render the "extra" labels (tooltip label and form validation label), because
-your custom code will handle this in your `render()` method.
+and by the `FormPanel` class (which handles the rendering of the icon). 
 
-For an example of this, see the implementation of the multi-line `TextField`.
-Because that component potentially spans multiple form rows, the `TextField.render()`
-method had to render both the tooltip icon (if help text is present) and the
-form validation icon.
+You can prevent the help icon from showing up in your custom FormField implementation
+by overriding the `hasHelpLabel()` method in your implementing class to return `false`.
+Let's look at the default implementation of this method in the parent `FormField` class:
+
+```java
+public boolean hasHelpLabel() {
+    return helpLabel.getToolTipText() != null && !helpLabel.getToolTipText().isBlank();
+}
+```
+
+This default implementation is generally what you want: the help label will automatically
+show up if your form field has help text, and will hide itself if not. If you're writing
+a custom `FormField` implementation that, for whatever reason, never requires a help
+label, you could override that method like this:
+
+```java
+@Override
+public boolean hasHelpLabel() {
+    return false; // help label will not show up even if help text is set
+}
+```
