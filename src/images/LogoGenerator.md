@@ -12,37 +12,33 @@ an application icon.
 
 ## Generator logo images
 
-We start by populating a `LogoConfig` object describing the image to be generated:
+We start by populating a `LogoProperty` object describing the image to be generated:
 
 ```java
-public final class LogoConfig {
+public final class LogoProperty extends AbstractProperty {
     // ...
 
-    public void setLogoWidth(int width) {...}
-    public void setLogoHeight(int height) {...}
+    private ColorType bgColorType;
+    private Color bgColor;
+    private Gradient bgGradient;
 
-    public void setYTweak(int tweak) {...}
-    public void setBgColorType(ColorType bgColorType) {...}
-    public void setBgGradient(GradientConfig bgGradient) {...}
-    public void setBgColor(Color bgColor) {...}
-    public void setBorderColorType(ColorType borderColorType) {...}
-    public void setBorderGradient(GradientConfig borderGradient) {...}
-    public void setBorderColor(Color borderColor) {...}
-    public void setBorderWidth(int borderWidth) {...}
-    public void setHasBorder(boolean hasBorder) {...}
-    public void setFont(Font font) {...}
-    public void setFontByFamilyName(String fontName) {...}
-    public void setTextColor(Color textColor) {...}
-    public void setTextColorType(ColorType textColorType) {...}
-    public void setTextGradient(GradientConfig textGradient) {...}
-    public void setFontPointSize(int fontPointSize) {...}
-    public void setAutoSize(boolean auto) {...}
-    public void resetToDefaults() {...}
+    private ColorType borderColorType;
+    private Color borderColor;
+    private Gradient borderGradient;
 
-    public void loadFromProps(Properties props, String prefix) {...}
-    public void saveToProps(Properties props, String prefix) {...}
+    private ColorType textColorType;
+    private Color textColor;
+    private Gradient textGradient;
+
+    private int borderWidth;
+    private boolean hasBorder;
+    private boolean autoSize;
+    private Font font;
+    private int logoWidth;
+    private int logoHeight;
+    private int yTweak;
     
-    // ...
+    // ... getters and setters omitted...
 }
 ```
 
@@ -52,11 +48,11 @@ Once we have configured the properties we want, we can talk to the `LogoGenerato
 public final class LogoGenerator {
     // ...
     
-    public static BufferedImage generateImage(String text, LogoConfig preset) {...}
-    public static void generateAndSaveImage(String text, LogoConfig preset, File outputFile) throws IOException {...}}
+    public static BufferedImage generateImage(String text, LogoProperty preset) {...}
+    public static void generateAndSaveImage(String text, LogoProperty preset, File outputFile) throws IOException {...}}
 }
 ```
 
-We see that the API here is quite simple. Just specify the text to render and your `LogoConfig` object,
+We see that the API here is quite simple. Just specify the text to render and your `LogoProperty` object,
 and decide whether you want to receive a `BufferedImage` generated in memory, or whether you want to save
 the resulting image directly to disk. Easy!
