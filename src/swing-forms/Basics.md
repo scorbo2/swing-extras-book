@@ -82,9 +82,8 @@ We do this by setting a unique identifier for the field when we create it. We ca
 query the `FormPanel` for this field later:
 
 ```java
-ShortTextField textField1 = new TextField("Enter some text:", 12);
-textField.setIdentifier("textField1");
-formPanel.add(textField1);
+formPanel.add(new ShortTextField("Enter some text:", 12)
+              .setIdentifier("textField1"));
 ```
 
 Then, later, when the form is submitted, we can find that field:
