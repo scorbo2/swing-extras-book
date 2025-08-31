@@ -21,7 +21,7 @@ List<String> items = List.of("Item 1", "Item 2", "Item 3", "Item 4",
 
 ListField<String> listField = new ListField<>("List:", items);
 listField.setFixedCellWidth(80);
-listField.setCellRenderer(new Renderer(90,25));
+listField.setCellRenderer(new MyAwfulRenderer(90,25));
 listField.setVisibleRowCount(4);
 listField.getMargins().setBottom(12);
 formPanel.add(listField);
@@ -42,7 +42,7 @@ private static class MyAwfulRenderer implements ListCellRenderer<String> {
     private final int cellWidth;
     private final int cellHeight;
 
-    public Renderer(int width, int height) {
+    public MyAwfulRenderer(int width, int height) {
         cellWidth = width;
         cellHeight = height;
     }
