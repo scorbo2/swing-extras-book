@@ -34,7 +34,7 @@ formPanel.add(comboField);
 And the implementation of the `MyAwfulRenderer` is pretty straightforward:
 
 ```java
-private static class Renderer implements ListCellRenderer<String> {
+private static class MyAwfulRenderer implements ListCellRenderer<String> {
 
     private final Map<String, ImagePanel> unselectedCells = new HashMap<>();
     private final Map<String, ImagePanel> selectedCells = new HashMap<>();
