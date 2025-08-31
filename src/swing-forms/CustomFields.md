@@ -23,6 +23,7 @@ public final class FontField extends FormField {
 
     private final JLabel sampleLabel;
     private final JButton button;
+    private final JPanel wrapperPanel;
     private ActionListener actionListener;
     private Font selectedFont;
     private Color textColor;
@@ -36,35 +37,10 @@ specifying a starting text color and background color. If the color properties a
 we'll omit them from our font dialog and those properties won't be editable.
 
 We also need to create our font chooser popup dialog. This is actually fairly easy because it
-is in fact just another FormPanel! We can mostly use existing FormFields to create it. The exception
-is our font family list chooser. We probably don't want to use a combo box here, as the list of
-installed system fonts might be quite large. It's easier to use a JList for this purpose, but we
-currently don't have a FormField that wraps JList, so we have to write some manual code here.
-Fortunately, it's not too difficult, as we can just wrap it in a PanelField:
+is in fact just another FormPanel! We can use existing FormFields to create it, such as ComboField,
+ListField, and LabelField. 
 
-```java
-// Create and configure a PanelField to house our custom stuff:
-PanelField panelField = new PanelField();
-JPanel panel = panelField.getPanel();
-panel.setLayout(new BorderLayout());
-
-// Create a JList to house the list of available fonts:
-fontListModel = new DefaultListModel<>();
-fontList = new JList<>(fontListModel);
-fontList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-fontList.addListSelectionListener(e -> fontChanged());
-
-// Add the font list to our PanelField:
-panel.add(new JScrollPane(fontList), BorderLayout.CENTER);
-
-// Add our PanelField to our FormPanel:
-formPanel.addFormField(panelField);
-```
-
-This is in fact why PanelField was created in the first place - to provide a way to wrap and house
-any arbitrary UI components that aren't currently wrapped up in their own FormField implementation.
-
-Okay, so we have an empty JList... how do we populate it with the list of fonts?
+Okay, so we have an empty Font list... how do we populate it with the list of fonts?
 
 ```java
 switch (typeField.getSelectedIndex()) {
@@ -80,124 +56,91 @@ switch (typeField.getSelectedIndex()) {
 }
 ```
 
-The Java built-in fonts are those guaranteed to use by the JRE. These are the "safe" fonts.
+The Java built-in fonts are those guaranteed to use by the JRE. These are the "safe" fonts
+that we can simply hard-code here with assurance from Java that they will resolve to actual
+system fonts at runtime.
+
 The system-installed fonts we can retrieve from the local graphics environment. This list may
-vary greatly from system to system and is beyond our control.
+vary greatly from system to system and is beyond our control, but we can enumerate them
+and present them to our users in the font list field.
 
-The next important step is to implement the render() method so that the field can draw itself.
-Unfortunately, here we have to deal with GridBagLayout a little bit. But, swing-forms tries
-to minimize this exposure by handing your method a GridBagConstraints object that you can
-use as you go. Here's our render() method:
+### Setting the field component
+
+The next important step when creating a custom FormField implementation is to set something
+called the `fieldComponent`. Let's look at part of the constructor of our FontField:
 
 ```java
-@Override
-public void render(JPanel container, GridBagConstraints constraints) {
-  constraints.insets = new Insets(topMargin, leftMargin, bottomMargin, componentSpacing);
-  constraints.gridy++;
-  constraints.gridx = FormPanel.LABEL_COLUMN;
-  fieldLabel.setFont(fieldLabelFont);
-  container.add(fieldLabel, constraints);
-
-  constraints.gridx = FormPanel.CONTROL_COLUMN;
-  button.setPreferredSize(new Dimension(95, 23));
-  button.setFont(selectedFont.deriveFont(12f));
-  
-  JPanel wrapperPanel = new JPanel();
-  wrapperPanel.setBackground(container.getBackground());
-  wrapperPanel.setLayout(new BoxLayout(wrapperPanel, BoxLayout.X_AXIS));
-  wrapperPanel.add(sampleLabel);
-  wrapperPanel.add(new JLabel(" ")); // spacer
-  wrapperPanel.add(button);
-
-  if (actionListener != null) {
-    button.removeActionListener(actionListener);
-  }
-  actionListener = getActionListener(container);
-  button.addActionListener(actionListener); // UTIL-147 avoid adding it twice
-
-  constraints.fill = 0;
-  constraints.insets = new Insets(topMargin, componentSpacing, bottomMargin, componentSpacing);
-  container.add(wrapperPanel, constraints);
-}
+//...
+wrapperPanel = new JPanel();
+wrapperPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+sampleLabel = new JLabel();
+sampleLabel.setOpaque(true);
+sampleLabel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
+updateSampleLabel();
+fieldComponent = wrapperPanel;
+wrapperPanel.add(sampleLabel);
+wrapperPanel.add(button);
+//...
 ```
 
-It is important to increment the `gridy` property straight away as we are starting a new
-row on the form. We can make use of the various `COLUMN` constants provided by the
-FormPanel class to control which component goes into which form column. Very basically,
-we have a form column for field labels and a form column for the field itself. Behind the
-scenes, there are some additional columns, but we rarely need to worry about them in
-a FormField's render implementation (but we can if we need to).
-
-We'll notice that the `CONTROL_COLUMN` here simply receives a `wrapperPanel`. What is this?
-We don't have a single control to display in this column, but rather we have two - our
-sample label and our action button. But our FormPanel only has one column for field controls.
-So, we have to wrap our multiple controls into one containing panel, and then add that panel
-in the `CONTROL_COLUMN`. This concept of wrapping multiple components into one wrapper
-is very handy for wrapping up multiple controls into a single FormField.
-
-We should also look at the ActionListener that we create for our button. It has to launch
-our FontDialog and update our field values as needed, based on what the user picked.
-Here we can also make use of the `fireValueChangedEvent()` method in the parent class:
+We create a `wrapperPanel` and add both our sample label to it, and also our JButton for launching the font
+selection dialog. Then, this wrapper panel is set as our field component:
 
 ```java
-/**
- * Creates and returns a new ActionListener suitable for our form field.
- *
- * @param panel The owning panel (used to position the popup dialog)
- * @return An ActionListener that can be attached to a button.
- */
-private ActionListener getActionListener(final JPanel panel) {
-  return new ActionListener() {
-    @Override
-    public void actionPerformed(ActionEvent e) {
-      FontDialog dialog = new FontDialog(panel, selectedFont, textColor, bgColor);
-      dialog.setVisible(true);
-      if (dialog.wasOkayed()) {
-        setSelectedFont(dialog.getSelectedFont());
-        setTextColor(dialog.getSelectedTextColor());
-        setBgColor(dialog.getSelectedBgColor());
-        fireValueChangedEvent();
-      }
+fieldComponent = wrapperPanel;
+```
+
+#### Anatomy of a FormField
+
+There are four main components within every FormField:
+
+1. The field label (optional in some components).
+2. The field component - this is the key part of the FormField.
+3. The help label (optional - only shown if help text is available)
+4. The validation label (optional - only shown when the form is validated)
+
+We can see these pieces in the screenshot below:
+
+![Anatomy of a FormField](anatomy-formfield.png "Anatomy of a FormField")
+
+When we create a custom FormField, we'll typically set the user-interactable component as our `fieldComponent`.
+But what if we require more than one UI component in our form field?
+
+Now we can see why our `FontField` implementation creates a wrapperPanel and adds more than one UI element
+to it. It's because the `FormField` parent class expects a single `fieldComponent`. Using a wrapper panel
+to group several UI components together into one `fieldComponent` can be a great way to develop complex,
+multi-component FormFields.
+
+### Allowing callers to listen for changes
+
+When designing a new `FormField` implementation, we should publish change events whenever the
+content of our field has been modified. This allows callers to respond to those change events
+if needed. In our case, we need to notify callers whenever one of our properties changes:
+the selected font, the selected font color, or the selected font background color. How
+do we do this? Fortunately, the parent `FormField` class makes this easy for us! It gives 
+us a `fireValueChangedEvent()` method that we can invoke whenever we detect any change. This
+method handles notifying all listeners, if any are registered. 
+
+So, we simply need to include this in our setter methods. For example:
+
+```java
+public FontField setSelectedFont(Font font) {
+    if (Objects.equals(selectedFont, font)) {
+        return this; // don't accept no-op changes
     }
-  };
+    selectedFont = font;
+    updateSampleLabel();
+    fireValueChangedEvent();
+    return this;
 }
 ```
 
-Triggering a value changed event will allow swing-forms to invoke any custom
-Actions that have been registered on our custom form field. This allows other fields
-to respond if they want to, based on whatever font the user has selected here.
+We first check to make sure that the call to `setSelectedFont()` will actually result in a change.
+(That is, if you invoke `setSelectedFont()` with the same font that is already selected, nothing happens).
+Next, we accept the new font, update our sample label, and invoke `fireValueChangedEvent()` in the parent
+class to notify any listeners. Finally, we return `this` to allow for fluent-style method chaining, as
+we do with all our setter methods.
 
-## Controlling visibility
-
-Just for fun, let's wire up a `FontField` to a control that lets us toggle its visibility on or off:
-
-![Visibility1](custom_field_setvisibility1.png "Visibility1")
-
-When we toggle the field to be invisible, we expect the `FontField` will be hidden. Right? Let's try it:
-
-![Visibility2](custom_field_setvisibility2.png "Visibility2")
-
-What happened? It looks like only the field label and the button were hidden, while the example font display
-remained visible! What happened is that we didn't override the `setVisible` method from `FormField`. 
-Let's do that now:
-
-```java
-@Override
-public void setVisible(boolean isVisible) {
-    super.setVisible(isVisible);
-    wrapperPanel.setVisible(isVisible);
-}
-```
-
-The parent class does not know about our `wrapperPanel`, so we have to remember to toggle its visibility
-whenever the field's visibility changes. Let's try it again with this change in place:
-
-![Visibility3](custom_field_setvisibility3.png "Visibility3")
-
-Much better! Another method that you might have to override in your custom `FormField` is the `setEnabled`
-method, for the same reason - if your custom field contains extra controls that the parent class doesn't know
-about, they will not be enabled or disabled when the field is enabled or disabled. In the case of `FontField`,
-we don't have to worry about that, because our sample font display label is read-only and so cannot be disabled.
 
 ## It's not just a documentation example
 

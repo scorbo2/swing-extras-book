@@ -13,8 +13,8 @@ options.add("This option has no extra settings");
 options.add("This option has 1 extra setting");
 options.add("This option has lot of extra settings");
 
-ComboField comboField = new ComboField("Show/hide extra fields:", options, 0, false);
-formPanel.addFormField(comboField);
+ComboField<String> comboField = new ComboField<>("Show/hide extra fields:", options, 0);
+formPanel.add(comboField);
 ```
 
 Then we can define some extra fields and hide them by default:
@@ -22,29 +22,29 @@ Then we can define some extra fields and hide them by default:
 ```java
 CheckBoxField extraField1 = new CheckBoxField("Extra setting", false);
 extraField1.setVisible(false);
-formPanel.addFormField(extraField1);
+formPanel.add(extraField1);
 
-TextField extraField2 = new TextField("Extra text field 1:", 10, 1, true);
+ShortTextField extraField2 = new ShortTextField("Extra text field 1:", 10);
 extraField2.setVisible(false);
-formPanel.addFormField(extraField2);
+formPanel.add(extraField2);
 
-TextField extraField3 = new TextField("Extra text field 2:", 10, 1, true);
+ShortTextField extraField3 = new ShortTextField("Extra text field 2:", 10);
 extraField3.setVisible(false);
-formPanel.addFormField(extraField3);
+formPanel.add(extraField3);
 
-TextField extraField4 = new TextField("Extra text field 3:", 10, 1, true);
+ShortTextField extraField4 = new ShortTextField("Extra text field 3:", 10);
 extraField4.setVisible(false);
-formPanel.addFormField(extraField4);
+formPanel.add(extraField4);
 ```
 
 Now, we can add a custom Action onto our ComboField to show or hide the
 extra fields depending on which combo option is selected:
 
 ```java
-comboField.addValueChangedAction(new AbstractAction() {
+comboField.addValueChangedListener(new ValueChangedListener() {
     @Override
-    public void actionPerformed (ActionEvent e){
-        int selectedIndex = mainComboField.getSelectedIndex();
+    public void formFieldValueChanged(FormField field){
+        int selectedIndex = ((ComboField)field).getSelectedIndex();
         extraField1.setVisible(selectedIndex == 1);
         extraField2.setVisible(selectedIndex == 2);
         extraField3.setVisible(selectedIndex == 2);
