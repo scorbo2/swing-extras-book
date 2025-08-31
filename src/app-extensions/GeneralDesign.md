@@ -4,18 +4,18 @@
 
 The first and most important step is to identify possible extension points in your code.
 Let's start with the simpler of our two examples: we want our application to be
-able to accept file input in other file formats. Okay, let's start by implementing the
-`AppExtension` interface for our fictional application:
+able to accept file input in other file formats. Okay, let's start by extending the
+`AppExtension` abstract class for our fictional application:
 
 ```java
-public abstract class MyExtension implements AppExtension {
+public abstract class MyExtension extends AppExtension {
     
     public abstract boolean isFormatSupported(File inputFile);
 }
 ```
 
-We've created an abstract class for our application and implemented the `AppExtension`
-interface. We then add a new abstract method called `isFormatSupported` that accepts
+We've created an abstract class for our application and extended the base `AppExtension`
+abstract class. We then add a new abstract method called `isFormatSupported` that accepts
 a candidate file and returns either true or false based on that file's format. But
 where is the logic for this method? Why not just implement right here?
 
@@ -32,7 +32,7 @@ We will also need a way for the extension to load data from the input file and r
 presumably in the form of some model object that our application deals with. Let's do that next:
 
 ```java
-public abstract class MyExtension implements AppExtension {
+public abstract class MyExtension extends AppExtension {
     
     public abstract boolean isFormatSupported(File inputFile);
     

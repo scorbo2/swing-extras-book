@@ -9,7 +9,7 @@ take a look at four of the abstract methods in this class:
 public abstract void saveToProps(Properties props);
 public abstract void loadFromProps(Properties props);
 
-public abstract FormField generateFormField();
+public abstract FormField generateFormFieldImpl();
 public abstract void loadFromFormField(FormField field);
 ```
 
@@ -39,17 +39,13 @@ public void loadFromProps(Properties props) {
 
 The `saveToProps()` and `loadFromProps()` methods are pretty much exactly what we might expect.
 We save or load a single boolean value, and we're done. But we must also implement
-`generateFormField()` and `loadFromFormField()` as well. What kind of form field would be
+`generateFormFieldImpl()` and `loadFromFormField()` as well. What kind of form field would be
 best for representing a boolean value? Why, a `CheckBoxField` of course!
 
 ```java
 @Override
-public FormField generateFormField() {
-    CheckBoxField field = new CheckBoxField(propertyLabel, value);
-    field.setIdentifier(fullyQualifiedName);
-    field.setEnabled(!isReadOnly);
-    field.setHelpText(helpText);
-    return field;
+public FormField generateFormFieldImpl() {
+    return new CheckBoxField(propertyLabel, value);
 }
 
 @Override
@@ -66,10 +62,13 @@ public void loadFromFormField(FormField field) {
 }
 ```
 
-We see that the `generateFormField()` method creates a simple checkbox and assigns it a unique 
-identifier (we'll discuss property identifiers in much more detail later). The `loadFromFormField()`
-method does some basic error handling to make sure the field was wired up correctly, and then 
-just reads the value from the checkbox. 
+We see that the `generateFormFieldImpl()` method simply creates and returns a simple checkbox field.
+This is a template method that is invoked as needed by the parent class - this is important, as we'll
+see later, because the parent class will do certain things with our generated FormField, such as
+assigning it a unique identifier. We'll discuss property identifiers in much more detail later.
+
+The `loadFromFormField()` method does some basic error handling to make sure the field was wired 
+up correctly, and then just reads the value from the checkbox. 
 
 So far, so good. But this is barely scratching the surface of what we can do here.
 
@@ -130,6 +129,8 @@ my.amazing.font.isBold=false
 my.amazing.font.isItalic=false
 my.amazing.font.name=SansSerif
 my.amazing.font.pointSize=22
+my.amazing.font.textColor=0x00000000
+my.amazing.font.bgColor=0xffffffff
 ```
 
 This is transparent to callers of this class - they don't need to know or care about the storage details
@@ -141,12 +142,9 @@ Let's see now what happens when we ask a `FontProperty` to generate a form field
 from a form field:
 
 ```java
-@Override
-public FormField generateFormField() {
+    @Override
+protected FormField generateFormFieldImpl() {
     FontField field = new FontField(propertyLabel, getFont(), textColor, bgColor);
-    field.setIdentifier(fullyQualifiedName);
-    field.setEnabled(!isReadOnly);
-    field.setHelpText(helpText);
     field.setShowSizeField(allowSizeSelection);
     return field;
 }

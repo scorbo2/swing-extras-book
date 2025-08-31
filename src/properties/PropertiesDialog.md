@@ -29,7 +29,7 @@ List<String> options = new ArrayList<>();
 options.add("Option 1");
 options.add("Option 2 (default)");
 options.add("Option 3");
-props.add(new ComboProperty("Intro.Overview.combo1", "ComboProperty:", options, 1, false));
+props.add(new ComboProperty<>("Intro.Overview.combo1", "ComboProperty:", options, 1, false));
 
 // Label styling options are available:
 props.add(new LabelProperty("Intro.Labels.someLabelProperty", "You can add labels, too!"));
@@ -40,18 +40,20 @@ props.add(testLabel);
 props.add(new LabelProperty("Intro.Labels.label3", "You can also add hidden properties."));
 
 // Color properties can accept solid colors, color gradients, or both:
-props.add(new ColorProperty("Colors.someSolidColor", "Solid color:", ColorProperty.ColorType.SOLID, Color.RED));
-props.add(new ColorProperty("Colors.someGradient", "Gradient:", ColorProperty.ColorType.GRADIENT));
-props.add(new ColorProperty("Colors.someMultiColor", "Both:", ColorProperty.ColorType.BOTH));
+props.add(new ColorProperty("Colors.someSolidColor", "Solid color:", ColorSelectionType.SOLID).setSolidColor(Color.RED));
+props.add(new ColorProperty("Colors.someGradient", "Gradient:", ColorSelectionType.GRADIENT));
+props.add(new ColorProperty("Colors.someMultiColor", "Both:", ColorSelectionType.EITHER));
 
 // File properties can accept directories or files:
 props.add(new DirectoryProperty("Files.someDirProperty", "Directory:"));
 props.add(new FileProperty("Files.someFileProperty", "File:"));
 
 // Text properties can be single-line or multi-line:
-props.add(new TextProperty("Text.Single line.someTextProp1", "Text property1:", "hello"));
-props.add(new TextProperty("Text.Single line.someTextProp2", "Text property2:", ""));
-props.add(new TextProperty("Text.Multi line.someMultiLineTextProp", "Text entry:", "You can support long text as well.", 40, 4));
+props.add(new ShortTextProperty("Text.Single line.someTextProp1", "Text property1:", "hello"));
+props.add(new ShortTextProperty("Text.Single line.someTextProp2", "Text property2:", ""));
+props.add(LongTextProperty.ofFixedSizeMultiLine("Text.Multi line.someMultiLineTextProp", "Text entry:", 4, 40)
+                          .setValue("You can support long text as well.\n\nPop-out editing is optional.")
+                          .setAllowPopoutEditing(true));
 
 // Properties can be "hidden".
 // They are readable and settable by the client application.
