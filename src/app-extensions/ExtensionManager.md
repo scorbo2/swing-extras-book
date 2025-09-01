@@ -24,11 +24,11 @@ by the application code itself. But what if we want to support the idea that an 
 could offer a brand-new image editing operation that we didn't even think of when writing
 the application? Can we do it? Sure!
 
-Let's again start by implementing the `AppExtension` interface, but this time let's
+Let's again start by extending the `AppExtension` abstract class, but this time let's
 keep it vague instead of focusing on specific actions like loading an input file:
 
 ```java
-public abstract class MyExtension implements AppExtension {
+public abstract class MyExtension extends AppExtension {
     
     public abstract List<AbstractAction> getImageEditActions();
 } 

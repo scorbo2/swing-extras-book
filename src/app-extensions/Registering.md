@@ -14,7 +14,6 @@ extension:
   "targetAppVersion": "1.0",
   "shortDescription": "Add a configurable border to selected image",
   "longDescription": "This is a test of the app extension code.\nThis will go in the README somewhere.",
-  "releaseNotes": "1.0 - initial release",
   "customFields": {
     "Custom field 1": "Hello"
   }

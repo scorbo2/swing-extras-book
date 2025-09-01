@@ -13,45 +13,63 @@ The code to generate a form with a simple text input field is quite simple:
 
 ```java
 FormPanel formPanel = new FormPanel();
-formPanel.addFormField(new TextField("Label:", 15, 1, true));
-formPanel.render();
+formPanel.add(new ShortTextField("Label:", 15));
 ```
 
-The TextField constructor takes the following parameters:
+The ShortTextField constructor takes the following parameters:
 
 - Text to show in the field label
 - Number of character columns for the text field (field width)
-- Number of character rows for the text field (1 for single-line input)
-- Whether the field should allow blank values or not
 
-Once the TextField has been created, it can be added to a FormPanel via the
-addFormField() method. And you don't have to write any manual layout code!
+Optionally, you can set some extra parameters at creation time:
+
+```java
+FormPanel formPanel = new FormPanel();
+formPanel.add(new ShortTextField("Label:", 15)
+              .setAllowBlank(false) // field will reject empty values when validating
+              .setText("initial text") // set an initial value for the field
+              );
+```
+
+Most `FormField` implementing classes use fluent-style setter methods to
+allow easy method chaining as shown above. Of course, you can also initialize
+a field in a non-fluent fashion. The below code is equivalent to the above code:
+
+```java
+FormPanel formPanel = new FormPanel();
+ShortTextField shortTextField = new ShortTextField("Label:", 15);
+shortTextField.setAllowBlank(false);
+shortTextField.setText("initial text");
+formPanel.add(shortTextField);
+```
+
+However you create the ShortTextField, it can then be added to a FormPanel via the
+add() method. And you don't have to write any manual layout code!
 
 ## Retrieving field values
 
 Of course, just adding a new field to a `FormPanel` won't help you retrieve the
 value of it once the form is submitted. For this purpose, you can either add an
-action to the form field using `addValueChangedAction()` to listen for updates
+action to the form field using `addValueChangedListener()` to listen for updates
 on the text field itself, or you can query for the field later by giving it
 a unique identifier. 
 
 ### Listening for change events on the field
 
 Let's say we want to receive updates as the user enters text on the field.
-We can do this by supplying a custom `AbstractAction` to the field:
+We can do this by supplying a custom `ValueChangedListener` to the field:
 
 ```java
-final TextField textField = new TextField("Enter some text:", 12, 1, true);
-textField.addValueChangedAction(new AbstractAction() {
+shortTextField.addValueChangedListener(new ValueChangedListener() {
     @Override
-    public void actionPerformed(ActionEvent e) {
-        String currentValue = textField.getText();
+    public void formFieldValueChanged(FormField field) {
+        String currentValue = ((ShortTextField)field).getText();
         // Do something with the current value...
     }
 });
 ```
 
-The drawback of this approach is that our action will be triggered every time the user
+The drawback of this approach is that our action will be triggered _every_ time the user
 adds, deletes, or edits text within the field, even before the form has been submitted.
 We likely don't want to do this (although there are many scenarios where listening
 to the form field for changes can be useful, as we will cover in the [Actions section](Actions.md) later).
@@ -64,15 +82,14 @@ We do this by setting a unique identifier for the field when we create it. We ca
 query the `FormPanel` for this field later:
 
 ```java
-TextField textField = new TextField("Enter some text:", 12, 1, true);
-textField.setIdentifier("textField");
-formPanel.addFormField(textField);
+formPanel.add(new ShortTextField("Enter some text:", 12)
+              .setIdentifier("textField1"));
 ```
 
 Then, later, when the form is submitted, we can find that field:
 
 ```java
-TextField textField = (TextField)formPanel.getFormField("textField");
+ShortTextField textField = (ShortTextField)formPanel.getFormField("textField1");
 String value = textField.getText();
 // do something with the value
 ```

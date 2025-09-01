@@ -46,11 +46,12 @@ Let's look at the actual change listener from the `MusicPlayer` example screensh
 ```java
 // Make sure we respond to change events properly, to enable or disable the override fields:
 overrideAppThemeWaveform.addFormFieldChangeListener(event -> {
-    boolean shouldEnable = ((ComboField)event.getFormField()).getSelectedIndex() == 1;
-    event.getFormPanel().getFormField(waveformBgColor.getFullyQualifiedName()).setEnabled(shouldEnable);
-    event.getFormPanel().getFormField(waveformFillColor.getFullyQualifiedName()).setEnabled(shouldEnable);
-    event.getFormPanel().getFormField(waveformOutlineColor.getFullyQualifiedName()).setEnabled(shouldEnable);
-    event.getFormPanel().getFormField(waveformOutlineThickness.getFullyQualifiedName()).setEnabled(shouldEnable);
+    boolean shouldEnable = ((ComboField<String>)event.formField()).getSelectedIndex() == 1;
+    FormPanel fp = event.formPanel();
+    fp.getFormField(waveformBgColor.getFullyQualifiedName()).setEnabled(shouldEnable);
+    fp.getFormField(waveformFillColor.getFullyQualifiedName()).setEnabled(shouldEnable);
+    fp.getFormField(waveformOutlineColor.getFullyQualifiedName()).setEnabled(shouldEnable);
+    fp.getFormField(waveformOutlineThickness.getFullyQualifiedName()).setEnabled(shouldEnable);
 });
 ```
 
