@@ -50,3 +50,21 @@ things that you otherwise wouldn't be able to do through the wrapping AbstractPr
 Here's how our custom BooleanProperty will render with our listener in place:
 
 ![FormFieldGenerationListener](formfieldgenerationlistener.png "FormFieldGenerationListener")
+
+## One minor caveat: identifiers
+
+One thing that you can't do in a `FormFieldGenerationListener` is modify the FormField's `identifier`
+property:
+
+```java
+myProperty.addFormFieldGenerationListener(new FormFieldGenerationListener() {
+    @Override
+    public void formFieldGenerated(AbstractProperty property, FormField formField) {
+        formField.setIdentifier("Ha ha! I'm overriding the identifier!"); // won't work
+    }
+});
+```
+
+The `AbstractProperty` won't let you do this, as it would break the linkage between the generated
+form field and the property that created it. So, you can call `setIdentifier()` all you want, but
+your change will be nullified by the property, and the internal identifier will be maintained. 
