@@ -109,7 +109,8 @@ But what if we require more than one UI component in our form field?
 Now we can see why our `FontField` implementation creates a wrapperPanel and adds more than one UI element
 to it. It's because the `FormField` parent class expects a single `fieldComponent`. Using a wrapper panel
 to group several UI components together into one `fieldComponent` can be a great way to develop complex,
-multi-component FormFields.
+multi-component FormFields. In our `FontField` example, the `fieldComponent` is a wrapper panel that contains
+both our sample label and also the button for launching the chooser dialog.
 
 ### Allowing callers to listen for changes
 
@@ -130,7 +131,7 @@ public FontField setSelectedFont(Font font) {
     }
     selectedFont = font;
     updateSampleLabel();
-    fireValueChangedEvent();
+    fireValueChangedEvent(); // Let listeners know that our value has changed!
     return this;
 }
 ```
