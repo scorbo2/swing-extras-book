@@ -18,6 +18,7 @@
   - [Custom properties](properties/CustomProperties.md)
   - [PropertiesDialog](properties/PropertiesDialog.md)
   - [Custom form logic](properties/CustomFormLogic.md)
+  - [Customizing the form field](properties/CustomFormFields.md)
 - [app-extensions](app-extensions/README.md)
   - [General design](app-extensions/GeneralDesign.md)
   - [ExtensionManager](app-extensions/ExtensionManager.md)
