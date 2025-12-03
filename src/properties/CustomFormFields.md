@@ -13,7 +13,7 @@ ShortTextProperty             ShortTextField
 
 Each `AbstractProperty` implementation wraps a `FormField` implementation, and exposes some of 
 the configuration of that field. So, when writing an application with swing-extras, you actually
-don't generally need to directly create your form fields directly, because whatever properties
+don't generally need to create your form fields directly, because whatever properties
 you're working with will do that for you. Great! This provides an abstraction that lets you
 focus more on what kind of data your application needs to work with, and less on how exactly
 that data should be represented to the user.
