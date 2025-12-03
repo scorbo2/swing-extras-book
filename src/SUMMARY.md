@@ -10,6 +10,7 @@
   - [Help tooltips](swing-forms/HelpTooltips.md)
   - [List rendering](swing-forms/ListRendering.md)
   - [Sliders](swing-forms/Sliders.md)
+  - [Panel fields](swing-forms/PanelField.md)
 - [Properties handling](properties/README.md)
   - [Relation to swing-forms](properties/swing-forms.md)
   - [Working with enums](properties/EnumProperty.md)
