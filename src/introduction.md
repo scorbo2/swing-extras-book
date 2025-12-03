@@ -2,12 +2,12 @@
 
 # What is this?
 
-`swing-extras` is a library of components for Java Swing applications. This collection has been in development
-since around 2012, but was not publicly available until 2025. This documentation guide covers the possibilities
-that `swing-extras` offers that allow you to quickly and easily add useful functionality to your Java Swing
-applications.
+`swing-extras` is a collection of custom components and utilities for Java Swing applications.
+This collection has been under development since 2012 or so.
+This documentation guide covers the possibilities that `swing-extras` offers that allow you to 
+quickly and easily add useful functionality to your Java Swing applications.
 
-**This guide covers version 2.5.0 of swing-extras from TODO insert date** 
+**This guide covers version 2.5.0 of swing-extras from 2025-12-01** 
 
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
@@ -44,4 +44,3 @@ you can do as you wish with the source code, provided the copyright notices rema
 
 Bug reports and feature requests are submitted via [GitHub issues](https://github.com/scorbo2/swing-extras/issues).
 Feel free to create a ticket there!
-
