@@ -7,22 +7,25 @@ This json file explicitly says which version of the app that extension targets. 
 from looking at the extension jar directory. For example:
 
 ```shell
-app-extension-name-1.0.jar
-app-extension-name-1.1.jar
-app-extension-name-1.2.jar
-app-extension-name-1.3.jar
+app-extension-name-1.0.jar # This one was written for application version 1.0
+app-extension-name-1.1.jar # This one was also written for application 1.0
+app-extension-name-1.2.jar # This one was released for application 1.1
+app-extension-name-1.3.jar # This one was released for application 2.0... wait, what?
 ```
 
-We see we've gone through a few versions of the extension, and there's no way to tell at a glance what
-app version each of these extensions intended to target.
+We see we've gone through a few versions of both the application and extension, and there's no way to tell at a glance what
+app version each of these extension versions intended to target.
 
 ## A versioning convention
 
-For this reason, the following convention is *suggested* (nothing in the code enforces this - you can version
-your extensions and your application however you like... but this might avoid headaches):
+For this reason, the following convention is *suggested* - nothing in the code enforces this! Of course,
+you can ignore this suggestion and version your extensions and your application however you like... but 
+the below suggestion is what I do, and I find it avoids headaches:
 
-- Extensions should use the major.minor version of the application
-- Extensions can add a patch version for multiple releases for a specific app version
+- Applications use a major.minor version scheme
+- Extensions use a major.minor.patch version scheme
+- The extension major.minor matches the application version that it targets
+- The extension patch number can be used for subsequent versions of the same extension targeting the same application version
 
 This convention allows us to easily determine compatibility just by looking at the jar files:
 
@@ -33,5 +36,5 @@ app-extension-name-2.2.0.jar (targets app version 2.2)
 app-extension-name-3.0.0.jar (targets app version 3.0)
 ```
 
-And so on. Now the guesswork is removed and we know which jar files apply to the version of the application we're using.
+And so on. Now the guesswork is removed, and we know which jar files apply to the version of the application we're using.
 
