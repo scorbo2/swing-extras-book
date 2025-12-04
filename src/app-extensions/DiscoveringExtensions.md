@@ -88,6 +88,8 @@ prompt is shown:
 
 ![Restart application](dynamic_extensions5.png "Restart application")
 
+(See the section on [shutdown hooks](ShutdownHooks.md) for an important note about restarts).
+
 ## Updating extensions
 
 Discovering and installing new extensions is great, but it doesn't stop there!
