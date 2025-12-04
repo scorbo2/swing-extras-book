@@ -2,8 +2,8 @@
 
 # What is this?
 
-`swing-extras` is a collection of custom components and utilities for Java Swing applications.
-This collection has been under development since 2012 or so.
+`swing-extras` is a collection of custom components and utilities for Java Swing applications,
+to allow developers to very quickly and easily stand up powerful applications with rich UI features.
 This documentation guide covers the possibilities that `swing-extras` offers that allow you to 
 quickly and easily add useful functionality to your Java Swing applications.
 
@@ -27,6 +27,10 @@ components of `swing-extras`:
   </dependency>
 </dependencies>
 ```
+
+Alternatively, you can clone the library from its [GitHub project page](https://github.com/scorbo2/swing-extras),
+build it on your own machine, run the demo app, generate the javadocs, and examine the source code. Contributions
+are welcome!
 
 At the time of this writing, `2.5.0` is the latest version. You can verify the latest available
 version on the GitHub project page:
