@@ -36,7 +36,9 @@ are three possible values for this field:
 The application doesn't treat System extensions any differently than User extensions. This information
 is presented in this dialog just for informational purposes. Extension config is stored together with
 application config, so each user on the same system can access the same System extension, each with their
-own configuration. The extension code in swing-extras manages this for you.
+own configuration (that is, "system" extensions do NOT have shared global configuration across all users
+on the system - rather, each user can have their own configuration for each extension). 
+The extension code in swing-extras manages all of this for you.
 
 ## Custom properties for extensions
 

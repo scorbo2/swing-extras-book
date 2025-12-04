@@ -49,3 +49,11 @@ public class MyExtension extends MyAppExtension {
 
 Attempting to lazy-load any resource outside of your constructor or the loadJarResources() method will fail!
 
+```java
+private void someExtensionMethod() {
+    // Hmm, I think I'll load another icon now...
+    InputStream inStream = getClass().getResourceAsStream("/some/icon.png");
+    
+    // Oh no - inStream is null! We should have done this in loadJarResources()...
+}
+```
