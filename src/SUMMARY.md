@@ -25,6 +25,7 @@
   - [Registering extensions](app-extensions/Registering.md)
   - [ExtensionManagerDialog](app-extensions/ExtensionManagerDialog.md)
   - [AppProperties](app-extensions/AppProperties.md)
+    - [AppProperties.peek](app-extensions/AppPropertiesPeek.md)
   - [Extension load order](app-extensions/ExtensionLoadOrder.md)
   - [Extension versioning](app-extensions/ExtensionVersioning.md)
   - [Extension resources](app-extensions/ExtensionResources.md)
