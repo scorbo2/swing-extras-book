@@ -1,5 +1,7 @@
 # ExtPackager
 
+ExtPackager is a separate project on GitHub: [https://github.com/scorbo2/ext-packager](https://github.com/scorbo2/ext-packager) 
+
 ![ExtPackager](ext-packager.png "ExtPackager")
 
 The `ExtPackager` application makes generating your json very easy. The application can walk you
