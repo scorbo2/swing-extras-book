@@ -87,7 +87,7 @@ List<String> options = List.of("One","Two","Three","Four","Five","Six");
 ListSubsetField<String> subsetField = new ListSubsetField<>("Select items:", options);
 
 // We can pre-select a few items by their list index, if we want:
-subsetField.selectIndexes(new int[] {0, 1}); // Select "One" and Two"
+subsetField.selectIndexes(new int[] {0, 1}); // Select "One" and "Two"
 
 formPanel.add(subsetField);
 ```
