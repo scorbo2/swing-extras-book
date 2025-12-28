@@ -13,7 +13,6 @@ The library jar includes a built-in demo application that offers a brief preview
 components of `swing-extras`:
 
 ![Built-in demo app](./demo-app.png "Overview")
-TODO update screenshot for 2.6
 
 ## How do I get it?
 
