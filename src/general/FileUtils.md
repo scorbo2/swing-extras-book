@@ -49,7 +49,7 @@ public class MyDownloadListener implements DownloadListener {
         //  so this method is not guaranteed to fire)
         
         // If the download is taking too long, we can offer the user a "cancel" button,
-        // and we can signal that the download shoulr be aborted by using the "kill" method:
+        // and we can signal that the download should be aborted by using the "kill" method:
         if (shouldCancelDownload()) {
             thread.kill(); // This will abort the download and trigger a downloadFailed() callback
         }
