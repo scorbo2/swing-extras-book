@@ -86,8 +86,11 @@ between the two lists, and it handles all the necessary logic for you. Setting u
 List<String> options = List.of("One","Two","Three","Four","Five","Six");
 ListSubsetField<String> subsetField = new ListSubsetField<>("Select items:", options);
 
+// We can optionally keep both lists sorted automatically as items are added/removed:
+subsetField.setAutoSortingEnabled(true);
+
 // We can pre-select a few items by their list index, if we want:
-subsetField.selectIndexes(new int[] {0, 1}); // Select "One" and "Two"
+subsetField.selectItems(List.of("One", "Two"));
 
 formPanel.add(subsetField);
 ```
