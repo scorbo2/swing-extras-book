@@ -89,7 +89,8 @@ ListSubsetField<String> subsetField = new ListSubsetField<>("Select items:", opt
 // We can optionally keep both lists sorted automatically as items are added/removed:
 subsetField.setAutoSortingEnabled(true);
 
-// We can pre-select a few items by their list index, if we want:
+// We can pre-select a few items, if we want.
+// This moves them to the "selected" list before the field is displayed:
 subsetField.selectItems(List.of("One", "Two"));
 
 formPanel.add(subsetField);
