@@ -111,6 +111,18 @@ Now, our list field looks much better:
 
 ![ListSubsetField wider example](listsubset_example2.png "ListSubsetField wider example")
 
+Alternatively, we could tell the ListSubsetField to expand to fill the available width of the form panel:
+
+```java
+subsetField.setShouldExpand(true);
+```
+
+This results in the following layout:
+
+![ListSubsetField expanded example](listsubset_example3.png "ListSubsetField expanded example")
+
+### Retrieving selected items
+
 The selected items can be retrieved via the `getSelectedValues()` method, just like with ListField,
 and the ListSubsetField class is also a typed generic class, so you can use any object type you want for your list items.
 
