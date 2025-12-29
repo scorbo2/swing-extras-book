@@ -113,7 +113,24 @@ Now, our list field looks much better:
 The selected items can be retrieved via the `getSelectedValues()` method, just like with ListField,
 and the ListSubsetField class is also a typed generic class, so you can use any object type you want for your list items.
 
+### Auto-sorting
+
+When auto-sorting is enabled, both lists are kept sorted in ascending order according to their 
+natural sort order (as defined by the `Comparable` interface). You can use the `setItemComparator()` method
+to provide a custom comparator if you want a different sort order. Or, you can disable auto-sort entirely,
+in which case, both lists will respect the insertion order of the items. Auto-sorting is disabled by default.
+Note that enabling auto-sort will disable the ability to drag items within a list to re-order the list!
+
+### Drag and Drop
+
+ListSubsetField supports drag and drop in two ways:
+
+1. Users can drag items from one list to the other to move them between the "available" and "selected" lists.
+2. Users can also drag items within a list to re-order the items in that list (but only if auto-sorting is disabled).
+
 ## Integration with Properties
 
-All of the list field classes in swing-extras have `AbstractProperty` wrappers, which is important
+Both `ListField` and `ListSubsetField` have `AbstractProperty` wrappers, which is important
 for using them with the properties system, as we will see in later sections of this documentation.
+Refer to `ListProperty` and `ListSubsetProperty` for more information on how to use these
+property wrappers.
