@@ -7,7 +7,7 @@ to allow developers to very quickly and easily stand up powerful applications wi
 This documentation guide covers the possibilities that `swing-extras` offers that allow you to 
 quickly and easily add useful functionality to your Java Swing applications.
 
-**This guide covers version 2.5.0 of swing-extras from 2025-12-01** 
+**This guide covers version 2.6.0 of swing-extras from 2025-12-31** 
 
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
@@ -23,7 +23,7 @@ components of `swing-extras`:
   <dependency>
     <groupId>ca.corbett</groupId>
     <artifactId>swing-extras</artifactId>
-    <version>2.5.0</version>
+    <version>2.6.0</version>
   </dependency>
 </dependencies>
 ```
@@ -32,7 +32,7 @@ Alternatively, you can clone the library from its [GitHub project page](https://
 build it on your own machine, run the demo app, generate the javadocs, and examine the source code. Contributions
 are welcome!
 
-At the time of this writing, `2.5.0` is the latest version. You can verify the latest available
+At the time of this writing, `2.6.0` is the latest version. You can verify the latest available
 version on the GitHub project page:
 - <https://github.com/scorbo2/swing-extras>
 - [Browse the javadocs online](http://www.corbett.ca/swing-extras-javadocs/)

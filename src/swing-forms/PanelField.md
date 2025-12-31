@@ -140,3 +140,85 @@ panelField = new CollapsiblePanelField(
 That will cause the field to render in its collapsed state initially:
 
 ![Panel field initial state](panelfield_collapsedinitially.png "Panel field initial state")
+
+## A special case for panel fields: ButtonField
+
+A common use of PanelField and CollapsiblePanelField is to group together a set of buttons
+for performing some action related to the contents of the form. This is reasonably straightforward
+to achieve with a PanelField:
+
+```java
+PanelField buttonPanelField = new PanelField(new FlowLayout(FlowLayout.LEFT));
+JButton addButton = new JButton("Add");
+JButton removeButton = new JButton("Remove");
+JButton clearButton = new JButton("Clear All");
+
+// Here is where we would size our buttons and add action listeners to them...
+
+// Then add them to the panel field:
+buttonPanelField.getPanel().add(addButton);
+buttonPanelField.getPanel().add(removeButton);
+buttonPanelField.getPanel().add(clearButton);
+
+formPanel.add(buttonPanelField);
+```
+
+However, `swing-forms` provides a special convenience class for this very purpose: `ButtonField`.
+ButtonField allows adding Actions directly to the field, and it will automatically create buttons for
+each action and lay them out nicely within the field panel. For example, suppose we have custom
+Actions for adding, removing, and clearing items from a list:
+
+```java
+public class AddItemAction extends AbstractAction {
+    public AddItemAction() {
+        super("Add");
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Implementation for adding an item
+    }
+}
+// And so on for RemoveItemAction and ClearItemsAction...
+```
+
+We can then create a ButtonField like this:
+
+```java
+ButtonField buttonField = new ButtonField();
+buttonField.addAction(new AddItemAction());
+buttonField.addAction(new RemoveItemAction());
+buttonField.addAction(new ClearItemsAction());
+
+// We can optionally request a specific size for the buttons:
+buttonField.setButtonPreferredSize(new Dimension(110, 25));
+
+// We can optionally set a field label:
+buttonField.getFieldLabel().setText("Button field:");
+
+formPanel.add(buttonField);
+```
+
+This will automatically create buttons for each action and lay them out within the field panel:
+
+![ButtonField example](buttonfield_example.png "ButtonField example")
+
+The containing panel can of course be customized as needed, by accessing the fieldComponent,
+or by using the convenient wrapper methods in ButtonField:
+
+```java
+// Set a custom border for the containing panel:
+buttonField.getFieldComponent().setBorder(BorderFactory.createLoweredBevelBorder());
+
+// Tell the ButtonField to expand to consume the entire width of the parent FormPanel:
+buttonField.setShouldExpand(true);
+
+// Adjust the FlowLayout positioning if desired:
+buttonField.setAlignment(FlowLayout.CENTER);
+```
+
+Now, our ButtonField looks like this:
+
+![ButtonField customized](buttonfield_example2.png "ButtonField customized")
+
+ButtonField represents an easier way of quickly adding buttons to your FormPanel without having to manually
+create a PanelField and add buttons to it yourself.
