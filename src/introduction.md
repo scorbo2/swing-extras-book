@@ -36,7 +36,8 @@ mvn archetype:generate \
 ```
 
 Just set the `groupId`, `artifactId`, `version`, and `artifactNamePascalCase` properties appropriately for your application.
-Always use the latest version of the archetype! 
+Always use the latest version of the archetype! `2.7.0` is the latest version at the time of this writing, but
+check [Maven Central](https://repo1.maven.org/maven2/ca/corbett/swing-extras-archetype/) for newer versions.
 
 The generated application includes many comments explaining what features were provided for you, and how/where
 to add customizations for your application. This is the easiest way to get started with `swing-extras`!
