@@ -50,7 +50,7 @@ String, and vice versa:
 
 ```java
 KeyStroke ks = KeyStrokeManager.parseKeyStroke("Ctrl+S");
-String ksString = KeyStrokeManager.keyStrokeToString(ks); // "Ctrl+S
+String ksString = KeyStrokeManager.keyStrokeToString(ks); // "Ctrl+S"
 ```
 
 ## Okay, how do I use it?
