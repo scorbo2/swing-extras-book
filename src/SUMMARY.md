@@ -51,6 +51,7 @@
 - [Miscellaneous](general/README.md)
   - [Look and Feel](general/LookAndFeel.md)
   - [ResourceLoader](general/ResourceLoader.md)
+  - [KeyStrokeManager](general/KeyStrokeManager.md)
   - [SingleInstanceManager](general/SingleInstanceManager.md)
   - [File utilities](general/FileUtils.md)
   - [AboutPanel](general/AboutPanel.md)
