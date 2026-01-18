@@ -25,11 +25,11 @@ listField.setVisibleRowCount(4);
 
 // Let's add some Buttons to it!
 listField.setButtonPreferredSize(new Dimension(20, 20));
-listField.addButton(new ListItemAddAction(listField3));
-listField.addButton(new ListItemMoveAction<>(listField3, ListItemMoveAction.Direction.UP));
-listField.addButton(new ListItemMoveAction<>(listField3, ListItemMoveAction.Direction.DOWN));
-listField.addButton(new ListItemRemoveAction(SwingFormsResources.getRemoveIcon(16), listField3));
-listField.addButton(new ListItemClearAction(SwingFormsResources.getRemoveAllIcon(16), listField3));
+listField.addButton(new ListItemAddAction(listField));
+listField.addButton(new ListItemMoveAction<>(listField, ListItemMoveAction.Direction.UP));
+listField.addButton(new ListItemMoveAction<>(listField, ListItemMoveAction.Direction.DOWN));
+listField.addButton(new ListItemRemoveAction(SwingFormsResources.getRemoveIcon(16), listField));
+listField.addButton(new ListItemClearAction(SwingFormsResources.getRemoveAllIcon(16), listField));
 listField.addButton(new ListItemHelpAction());
 ```
 
@@ -68,11 +68,11 @@ Much better! Now, it looks like one cohesive UI component.
 ## Further customization
 
 The button bar can be placed above or below the list (default below, as pictured above). This
-can be controlled via the `setButtonPanelPosition()` method:
+can be controlled via the `setButtonPosition()` method:
 
 ```java
 // Move the button panel above the ListField:
-listField3.setButtonPosition(ListField.ButtonPosition.TOP);
+listField.setButtonPosition(ListField.ButtonPosition.TOP);
 ```
 
 In our example above, we used buttons with icons, but of course you can also use text-based

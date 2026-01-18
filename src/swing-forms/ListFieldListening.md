@@ -6,7 +6,7 @@ to listen for changes in the field's value:
 ```java
 myListField.addValueChangedListener(new ValueChangedListener() {
     @Override
-    public void formFieldValueChanges(FormField field) {
+    public void formFieldValueChanged(FormField field) {
         log.info("The ListField value changed!");
     }
 });
