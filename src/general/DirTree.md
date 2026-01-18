@@ -85,7 +85,7 @@ public boolean selectionWillChange(DirTree source, File newSelectedDir) {
 }
 ```
 
-If the user select "No", then the selection change is canceled and the
+If the user selects "No", then the selection change is canceled and the
 `DirTree` remains on the previously selected directory.
 
 ## Programmatic selection
