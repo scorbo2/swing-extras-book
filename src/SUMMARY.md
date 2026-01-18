@@ -12,6 +12,8 @@
   - [Sliders](swing-forms/Sliders.md)
   - [Panel fields](swing-forms/PanelField.md)
   - [List fields](swing-forms/ListField.md)
+    - [Listening for changes](swing-forms/ListFieldListening.md)
+    - [Adding action buttons](swing-forms/ListFieldButtons.md)
   - [Image lists](swing-forms/ImageListField.md)
 - [Properties handling](properties/README.md)
   - [Relation to swing-forms](properties/swing-forms.md)
