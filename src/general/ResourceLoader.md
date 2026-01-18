@@ -74,8 +74,8 @@ public final class SwingFormsResources extends ResourceLoader {
     static final String INVALID = "formfield-invalid.png";
     static final String HELP = "formfield-help.png";
     static final String BLANK = "formfield-blank.png";
-    static final String LOCKED = "formfield-locked.png"; // currently unused
-    static final String UNLOCKED = "formfield-unlocked.png"; // currently unused
+    static final String LOCKED = "formfield-locked.png";
+    static final String UNLOCKED = "formfield-unlocked.png";
     static final String COPY = "formfield-copy.png";
     static final String HIDDEN = "formfield-hidden.png";
     static final String REVEALED = "formfield-revealed.png";
@@ -106,7 +106,14 @@ public final class SwingFormsResources extends ResourceLoader {
         return internalLoad(HELP, size);
     }
 
-    // ... etc for other icons ...
+    /**
+     * Returns an ImageIcon to represent a lock.
+     */
+    public static ImageIcon getLockedIcon(int size) {
+        return internalLoad(LOCKED, size);
+    }
+    
+    // ... and etc for other icons ...
 
     /**
      * All icons are all stored at 48x48 internally, but can be requested at any size.
@@ -119,14 +126,12 @@ public final class SwingFormsResources extends ResourceLoader {
      */
     static ImageIcon internalLoad(String resourceName, int size) {
 
+        // Pseudocode for internalLoad method:
+        //
         // See if the image is cached, and return it if so
-        
         // Load the resource image using ResourceLoader static methods
-        
         // Add to cache at native size
-        
         // Perform resize if requested
-        
         // return the scaled image as an ImageIcon!
     }
 ```
