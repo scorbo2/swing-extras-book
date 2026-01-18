@@ -63,7 +63,7 @@ myDirTree.addDirTreeListener(new DirTreeListener() {
 Now you can respond to selection changes by, for example, displaying a list of
 files in the current directory in some other part of your application UI.
 
-## Programmatically "locking" to a specific directory
+## Confirming selection changes
 
 Perhaps there are unsaved changes in your application related to the currently
 selected directory. In that case, you may wish to show a confirmation dialog
