@@ -16,8 +16,8 @@ JLayer<JPanel> blurLayer = new JLayer<>(myPanel, blurUI);
 containerPanel.add(blurLayer);
 
 // Now we can blur it!
-blurLayer.setOverlayText("This panel is blurred!");
-blurLayer.setBlurIntensity(BlurLayerUI.BlurIntensity.STRONG);
+blurUI.setOverlayText("This panel is blurred!");
+blurUI.setBlurIntensity(BlurLayerUI.BlurIntensity.STRONG);
 ```
 
 This creates an effect like this:
@@ -27,7 +27,7 @@ This creates an effect like this:
 We can customize this, for example by changing the overlay text color:
 
 ```java
-blurLayer.setOverlayTextColor(Color.RED);
+blurUI.setOverlayTextColor(Color.RED);
 ```
 
 This results in:
@@ -37,7 +37,7 @@ This results in:
 Or, we can add a color tint to the blur effect itself, like this:
 
 ```java
-blurLayer.setBlurOverlayColor(Color.BLUE); // semi-transparent blue tint
+blurUI.setBlurOverlayColor(Color.BLUE); // semi-transparent blue tint
 ```
 
 This gives us:
@@ -48,7 +48,7 @@ We can also vary the intensity of the blur from mild to extreme.
 On the weakest setting, the underlying panel contents are still somewhat visible:
 
 ```java
-blurLayer.setBlurIntensity(BlurLayerUI.BlurIntensity.MILD);
+blurUI.setBlurIntensity(BlurLayerUI.BlurIntensity.MILD);
 ```
 
 This produces:
@@ -80,11 +80,11 @@ FadeLayerUI fadeUI = new FadeLayerUI();
 JLayer<JPanel> fadeLayer = new JLayer<>(myPanel, fadeUI);
 containerPanel.add(fadeLayer);
 
-fadeLayerUI.fadeOut(() -> {
+fadeUI.fadeOut(() -> {
     // Swap panel contents here...
     
     // Then, we can fade in on the new panel:
-    fadeLayerUI.fadeIn(null);
+    fadeUI.fadeIn(null);
 });
 ```
 
@@ -96,13 +96,13 @@ We can customize the fade duration, animation speed, and fade color. For example
 
 ```java
 // Make the fade transition last longer:
-fadeLayerUI.setAnimationDuration(FadeLayerUI.AnimationDuration.VeryLong);
+fadeUI.setAnimationDuration(FadeLayerUI.AnimationDuration.VeryLong);
 
 // Let's fade to blue instead of the default white:
-fadeLayerUI.setFadeColor(Color.BLUE);
+fadeUI.setFadeColor(Color.BLUE);
 
 // We can control the FPS of the animation too:
-fadeLayerUI.setAnimationSpeed(FadeLayerUI.AnimationSpeed.MEDIUM);
+fadeUI.setAnimationSpeed(FadeLayerUI.AnimationSpeed.MEDIUM);
 ```
 
 Now, our fade looks like this:
