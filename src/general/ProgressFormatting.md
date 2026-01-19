@@ -37,7 +37,7 @@ dialog.setFormatString(MultiProgressDialog.DEFAULT_PROGRESS_FORMAT);
 //    %m = the worker-thread-supplied message
 //    %s = the current 1-based step number
 //    %t = the total number of steps
-multiProgressDialog.setFormatString("Processing item %s of %t: %m");
+dialog.setFormatString("Processing item %s of %t: %m");
 ```
 
 Keep in mind there is a fixed length limit of 50 characters for the progress label, including the
