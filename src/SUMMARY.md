@@ -56,6 +56,7 @@
   - [File utilities](general/FileUtils.md)
   - [AboutPanel](general/AboutPanel.md)
   - [AudioUtil](general/AudioUtil.md)
+  - [Panel effects](general/PanelEffects.md)
   - [DesktopPane](general/DesktopPane.md)
   - [DirTree](general/DirTree.md)
   - [Progress](general/Progress.md)
