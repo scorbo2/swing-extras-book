@@ -43,7 +43,7 @@ and log it at the same time.
 Starting in the 2.7 release of swing-extras, the `MessageUtil` also adds a few options for interactivity:
 
 - `askYesNo()` - Displays a Yes/No dialog to the user.
-- `askYesNoCancel()` - same, but also adds a Cancel option.
+- `askYesNoCancel()` - Displays a Yes/No/Cancel dialog to the user.
 - `askText()` - Prompts the user for simple single-line text input.
 - `askSelect()` - Prompts the user to select one option from a list of options.
 
