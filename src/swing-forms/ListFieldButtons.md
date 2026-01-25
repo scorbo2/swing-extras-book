@@ -93,17 +93,17 @@ The `ListItemAddAction` class is not included in the main swing-extras library, 
 items to a list usually requires some custom UI to gather the new item data from the user.
 The library doesn't know what kind of items you have in your list, or how to create a new one!
 
-However, the demo application that comes with swing-extras includes an example implementation
-of `ListItemAddAction` that you can refer to when implementing your own "Add item" action for
-your `ListField`. It looks like this:
+However, the demo application that comes with swing-extras includes a custom example implementation
+of `ListItemAddAction` (not part of the core library) that you can refer to when implementing your
+own "Add item" action for your `ListField`. It looks like this:
 
 ```java
 /**
- * Adding a list item is one of the actions that we can't supply 
- * out-of-the-box, because we don't know what type of data the 
- * list holds or what the list represents. So, here's a simple 
- * example action that prompts the user for a simple string value
- * and adds it to the list.
+ * Adding a list item is one of the actions that swing-extras can't supply
+ * out-of-the-box in the core library, because it doesn't know what type
+ * of data the list holds or what the list represents. This is a simple
+ * demo action that prompts the user for a string value and adds it to
+ * the list, as an example of how you might implement your own.
  */
 private static class ListItemAddAction extends EnhancedAction {
 
