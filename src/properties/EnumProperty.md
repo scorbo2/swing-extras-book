@@ -35,10 +35,6 @@ That's it! The `EnumProperty` is smart enough to interrogate the given enum and 
 `toString()` to populate the combo box, but using `name()` to store items into the `Properties` object.
 This gives you the best of both worlds.
 
-You also have the choice of using the `useNamesInsteadOfLabels` option with `EnumProperty` if you actually
-want to display the enum `name()` instead of its `toString()` in the combo box. The default value is
-to use `toString()` as it is usually the user-friendlier option.
-
 ## EnumProperty example
 
 The `swing-extras` demo app contains a quick demo of the `EnumProperty` class. Let's look at the definition of
@@ -75,10 +71,24 @@ The result looks like this:
 
 ![Enum example 1](enum_example1.png)
 
-We also have the option of using the `useNamesInsteadOfLabels` option if we wish to usee the enum value names
-instead of the `toString` value for some reason. The result of that is shown below:
+Of course, if we really want to display the enum value names instead of the `toString()` values, we can do that too,
+by using a `ComboProperty<String>` and manually populating with the enum names, like this:
+
+```java
+// Get all enum value names as Strings:
+List<String> enumNames = new ArrayList<>();
+for (TestEnum val : TestEnum.values()) {
+    enumNames.add(val.name());
+}
+
+// Now we can show them in a simple ComboProperty:
+props.add(new ComboProperty<>("Enums.Enums.enumField1_names",
+                              "Choose:",
+                              enumNames, 0, false));
+```
+
+This will handle the generation of the `ComboField<String>` for us. When rendered, it looks like this:
 
 ![Enum example 2](enum_example2.png)
 
-The code is otherwise identical, and your code doesn't ever need to populate the combobox directly, or read
-values from it directly. Your code always deals with instances of your enum, which is much easier!
+For most cases, however, the `EnumProperty` is the better choice, since it handles all the boilerplate code for you!
