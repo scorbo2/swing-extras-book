@@ -34,8 +34,18 @@ without the ability to detect user selection events:
 ```java
 myDirTree.addDirTreeListener(new DirTreeListener() {
     @Override
+    public boolean selectionWillChange(DirTree source, File newSelectedDir) {
+        return true; // Allow the selection to change
+    }
+    
+    @Override
     public void selectionChanged(DirTree source, File selectedDir) {
         // The selection has changed
+    }
+
+    @Override
+    public void showHiddenFilesChanged(DirTree source, boolean showHiddenFiles) {
+        // The "show hidden files" setting has changed
     }
     
     @Override
@@ -53,6 +63,31 @@ myDirTree.addDirTreeListener(new DirTreeListener() {
 Now you can respond to selection changes by, for example, displaying a list of
 files in the current directory in some other part of your application UI.
 
+## Confirming selection changes
+
+Perhaps there are unsaved changes in your application related to the currently
+selected directory. In that case, you may wish to show a confirmation dialog
+before allowing the user to change the selection. How can we do this?
+We can use the `selectionWillChange` event to intercept selection changes
+and show a confirmation dialog:
+
+```java
+// Inside our DirTreeListener implementation:
+@Override
+public boolean selectionWillChange(DirTree source, File newSelectedDir) {
+    int result = JOptionPane.showConfirmDialog(
+        null,
+        "You have unsaved changes! Really change directories?",
+        "Confirm selection change",
+        JOptionPane.YES_NO_OPTION
+    );
+    return result == JOptionPane.YES_OPTION;
+}
+```
+
+If the user selects "No", then the selection change is canceled and the
+`DirTree` remains on the previously selected directory.
+
 ## Programmatic selection
 
 You can also programmatically lock the `DirTree` to any
@@ -68,6 +103,17 @@ if necessary so that it is visible in the view:
 
 ```java
 myDirTree.selectAndScrollTo(new File("/some/nested/dir/somewhere/else"));
+```
+
+## Showing or hiding "hidden" files
+
+Exactly what constitutes a "hidden" file is platform-dependent. For example, on Linux-based systems,
+a hidden file is any file or directory whose name begins with a dot (`.`). With DirTree, you can
+opt to show these hidden directories, either programmatically, or via the popup menu:
+
+```java
+// Let's hide hidden files (by default, they are shown):
+myDirTree.setShowHiddenFiles(false);
 ```
 
 ## Real-world example
