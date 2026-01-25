@@ -45,7 +45,7 @@ for (int i = 0; i < someHighNumber; i++) {
         logger.fine("Critical inner section took "+Stopwatch.report("criticalInnerSection")+"ms.");
 }
 Stopwatch.stop("totalProcess");
-logger.info("Total process took "+Stopwatch.reportFormatted());
+logger.info("Total process took "+Stopwatch.reportFormatted("totalProcess"));
 ```
 
 We can start and stop as many timers as we need and they can run concurrently without interfering
