@@ -59,7 +59,7 @@ if (JOptionPane.showConfirmDialog(
                 "Are you sure about that?",
                 "Confirm",
                 JOptionPane.YES_NO_OPTION
-        ) == JOptionPane.YES_OPTION {
+        ) == JOptionPane.YES_OPTION) {
     // User clicked Yes
 }
 
