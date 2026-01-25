@@ -79,7 +79,7 @@ Or you can reassign handlers at any time:
 
 ```java
 // Remap aboutAction to Ctrl+Shift+A instead of Ctrl+A:
-keyManager.registerHandler(aboutAction, "Ctrl+Shift+A");
+keyManager.registerHandler("Ctrl+Shift+A", aboutAction);
 ```
 
 ## User customization and persistence
