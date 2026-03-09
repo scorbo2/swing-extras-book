@@ -20,6 +20,7 @@
   - [Working with enums](properties/EnumProperty.md)
   - [Custom properties](properties/CustomProperties.md)
   - [PropertiesDialog](properties/PropertiesDialog.md)
+    - [Tabs versus ActionPanel](properties/PropertiesDialogTabsVsActionPanel.md)
   - [Custom form logic](properties/CustomFormLogic.md)
   - [Customizing the form field](properties/CustomFormFields.md)
 - [app-extensions](app-extensions/README.md)
