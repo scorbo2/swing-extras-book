@@ -129,7 +129,7 @@ so that you can respond to double-clicks on files in the tree:
 
 ```java
 @Override
-void fileDoubleClicked(DirTree source, File file) {
+public void fileDoubleClicked(DirTree source, File file) {
     // A file was double-clicked in the tree
     // For example, we could open the file in an editor:
     openFileInEditor(file);
@@ -143,7 +143,7 @@ a hidden file is any file or directory whose name begins with a dot (`.`). With 
 opt to show these hidden directories, either programmatically, or via the popup menu:
 
 ```java
-// Let's hide hidden files (by default, they are shown):
+// Let's hide hidden files/dirs (by default, they are shown):
 myDirTree.setShowHidden(false);
 ```
 
