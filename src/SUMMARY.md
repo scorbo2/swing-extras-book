@@ -62,6 +62,13 @@
   - [Progress](general/Progress.md)
     - [Formatting](general/ProgressFormatting.md)
   - [MessageUtil](general/MessageUtil.md)
+- [ActionPanel](actionpanel/README.md)
+  - [Action type](actionpanel/ActionType.md)
+  - [Styling options](actionpanel/Styling.md)
+  - [Margins and padding](actionpanel/Margins.md)
+  - [Group toolbars](actionpanel/GroupToolbars.md)
+  - [Expand/collapse options](actionpanel/ExpandCollapse.md)
+  - [Events](actionpanel/Events.md)
 - [Conclusion](./conclusion.md)
 
 --------------
