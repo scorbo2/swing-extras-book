@@ -66,7 +66,7 @@ cd swing-extras
 mvn package
 
 # Run the built-in demo app:
-java -jar target/swing-extras-2.8.0-jar-with-dependencies.jar 
+java -jar target/swing-extras-2.8.0-jar-with-dependencies.jar
 ```
 
 ### Updates, issues, and more information
