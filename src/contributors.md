@@ -13,6 +13,10 @@ is amazingly easy to use.
 Patches and bug fixes from the following users have been accepted into `swing-extras`!
 
 - [Bhawna Pannu](https://github.com/bhawnapannu2701)
+- [erilofe](https://github.com/erilofe)
+- [Sharayu1418](https://github.com/Sharayu1418)
+- [cnaples79](https://github.com/cnaples79)
+- [mahmoudss5](https://github.com/mahmoudss5)
 
 If you'd like to contribute, take a look at the [outstanding issues](https://github.com/scorbo2/swing-extras/issues)
 and submit a PR!

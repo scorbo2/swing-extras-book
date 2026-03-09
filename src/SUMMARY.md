@@ -20,6 +20,7 @@
   - [Working with enums](properties/EnumProperty.md)
   - [Custom properties](properties/CustomProperties.md)
   - [PropertiesDialog](properties/PropertiesDialog.md)
+    - [Tabs versus ActionPanel](properties/PropertiesDialogTabsVsActionPanel.md)
   - [Custom form logic](properties/CustomFormLogic.md)
   - [Customizing the form field](properties/CustomFormFields.md)
 - [app-extensions](app-extensions/README.md)
@@ -62,6 +63,13 @@
   - [Progress](general/Progress.md)
     - [Formatting](general/ProgressFormatting.md)
   - [MessageUtil](general/MessageUtil.md)
+- [ActionPanel](actionpanel/README.md)
+  - [Action type](actionpanel/ActionType.md)
+  - [Styling options](actionpanel/Styling.md)
+  - [Margins and padding](actionpanel/Margins.md)
+  - [Group toolbars](actionpanel/GroupToolbars.md)
+  - [Expand/collapse options](actionpanel/ExpandCollapse.md)
+  - [Events](actionpanel/Events.md)
 - [Conclusion](./conclusion.md)
 
 --------------

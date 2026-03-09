@@ -57,6 +57,11 @@ myDirTree.addDirTreeListener(new DirTreeListener() {
     public void treeUnlocked(DirTree source) {
         // Tree has been unlocked
     }
+    
+    @Override
+    public void fileDoubleClicked(DirTree source, File file) {
+        // A file was double-clicked in the tree
+    }
 });
 ```
 
@@ -105,6 +110,32 @@ if necessary so that it is visible in the view:
 myDirTree.selectAndScrollTo(new File("/some/nested/dir/somewhere/else"));
 ```
 
+## New in 2.8! Showing files in the tree
+
+In `swing-extras` releases prior to 2.8, the `DirTree` component only showed directories.
+This is still the default behavior in 2.8, to maintain backward compatibility, 
+but now you have the option to show files in the tree as well, if you wish:
+
+```java
+// Show files in the tree (by default, only directories are shown):
+myDirTree.setShowFiles(true);
+
+// Set an optional FileFilter to control which files are shown (by default, all files are shown):
+myDirTree.setFileFilter(file -> file.isDirectory() || file.getName().endsWith(".txt"));
+```
+
+A new `fileDoubleClicked` event has also been added to the `DirTreeListener` interface, 
+so that you can respond to double-clicks on files in the tree:
+
+```java
+@Override
+public void fileDoubleClicked(DirTree source, File file) {
+    // A file was double-clicked in the tree
+    // For example, we could open the file in an editor:
+    openFileInEditor(file);
+}
+```
+
 ## Showing or hiding "hidden" files
 
 Exactly what constitutes a "hidden" file is platform-dependent. For example, on Linux-based systems,
@@ -112,9 +143,11 @@ a hidden file is any file or directory whose name begins with a dot (`.`). With 
 opt to show these hidden directories, either programmatically, or via the popup menu:
 
 ```java
-// Let's hide hidden files (by default, they are shown):
-myDirTree.setShowHiddenFiles(false);
+// Let's hide hidden files/dirs (by default, they are shown):
+myDirTree.setShowHidden(false);
 ```
+
+Note that "show hidden" here applies to both hidden files and hidden directories.
 
 ## Real-world example
 

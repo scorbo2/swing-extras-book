@@ -7,7 +7,7 @@ to allow developers to very quickly and easily stand up powerful applications wi
 This documentation guide covers the possibilities that `swing-extras` offers that allow you to 
 quickly and easily add useful functionality to your Java Swing applications.
 
-**This guide covers version 2.7.0 of swing-extras from 2026-01-25**
+**This guide covers version 2.8.0 of swing-extras from 2026-03-08**
 
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
@@ -27,7 +27,7 @@ To use the archetype, run the following command:
 mvn archetype:generate \
   -DarchetypeGroupId=ca.corbett \
   -DarchetypeArtifactId=swing-extras-archetype \
-  -DarchetypeVersion=2.7.0 \
+  -DarchetypeVersion=2.8.0 \
   -DgroupId=com.example \
   -DartifactId=my-app \
   -Dversion=1.0.0 \
@@ -35,7 +35,7 @@ mvn archetype:generate \
 ```
 
 Just set the `groupId`, `artifactId`, `version`, and `artifactNamePascalCase` properties appropriately for your application.
-Always use the latest version of the archetype! `2.7.0` is the latest version at the time of this writing, but
+Always use the latest version of the archetype! `2.8.0` is the latest version at the time of this writing, but
 check [Maven Central](https://repo1.maven.org/maven2/ca/corbett/swing-extras-archetype/) for newer versions.
 
 The generated application includes many comments explaining what features were provided for you, and how/where
@@ -51,7 +51,7 @@ then start building swing-extras features and components into your Swing applica
   <dependency>
     <groupId>ca.corbett</groupId>
     <artifactId>swing-extras</artifactId>
-    <version>2.7.0</version>
+    <version>2.8.0</version>
   </dependency>
 </dependencies>
 ```
@@ -66,12 +66,12 @@ cd swing-extras
 mvn package
 
 # Run the built-in demo app:
-java -jar target/swing-extras-2.7.0-jar-with-dependencies.jar 
+java -jar target/swing-extras-2.8.0-jar-with-dependencies.jar
 ```
 
 ### Updates, issues, and more information
 
-At the time of this writing, `2.7.0` is the latest version. Use the following links for more information:
+At the time of this writing, `2.8.0` is the latest version. Use the following links for more information:
 
 - [swing-extras on GitHub](https://github.com/scorbo2/swing-extras)
 - Use the [GitHub issues page](https://github.com/scorbo2/swing-extras/issues) to report bugs or request features.
