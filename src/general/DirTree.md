@@ -59,7 +59,7 @@ myDirTree.addDirTreeListener(new DirTreeListener() {
     }
     
     @Override
-    void fileDoubleClicked(DirTree source, File file) {
+    public void fileDoubleClicked(DirTree source, File file) {
         // A file was double-clicked in the tree
     }
 });
