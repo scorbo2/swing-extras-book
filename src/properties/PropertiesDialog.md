@@ -111,11 +111,11 @@ from itself, we actually don't need to write a single line of UI code to generat
 can handle creating all the `FormPanel` and `FormField` instances that it needs.
 
 Referring to our screenshot at the top of this page, you can see how the top-level categories
-in our fully qualified names were turned into tab headers, and the subcategory names were
-used to generate section header labels. The forms organize themselves and we don't have to
-lay out a single UI element!
+in our fully qualified names were turned into tab headers (or ActionPanel groups - see next section).
+The subcategory names were used to generate section header labels.
+The forms organize themselves, and we don't have to lay out a single UI element!
 
-## A real-world example: musicplayer
+## A real-world example: MusicPlayer
 
 For an example of what's possible with these properties classes in `swing-extras`, I refer you
 to my own [musicplayer application](https://github.com/scorbo2/musicplayer):
