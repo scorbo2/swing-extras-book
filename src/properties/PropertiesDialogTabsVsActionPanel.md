@@ -13,7 +13,7 @@ the `generateClassicDialog()` wrapper method in `PropertiesManager`. It looks li
 
 If your application uses the application extension mechanism provided by `swing-extras`, you will have
 to override the `showPropertiesDialog()` method in your `AppProperties` implementing class, and
-invoked `generateClassicDialog()` instead of `generateDialog()`, to get this style of dialog.
+invoke `generateClassicDialog()` instead of `generateDialog()`, to get this style of dialog.
 
 ## The new ActionPanel style
 
