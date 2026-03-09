@@ -22,11 +22,11 @@ sense for your supplier to notify your application code about the new item!
 actionPanel.addExpandListener((g,e) -> {
     // Example: "Group FirstGroup expanded: true"
     // Example: "Group SecondGroup expanded: false" 
-    log.info("Group " + g.getName() + " expanded: " + e));
+    log.info("Group " + g.getName() + " expanded: " + e);
 });
 
 // Listen for changes to header margins:
-actionPanel.getHeaderMargins().addListener(m -> {)
+actionPanel.getHeaderMargins().addListener(m -> {
     log.info("Header margins changed! New margins: " + m);
 });
 
