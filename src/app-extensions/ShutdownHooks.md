@@ -61,10 +61,16 @@ properly marshal these UI interactions to the Swing Event Dispatch Thread:
  * Perform normal shutdown tasks before the application exits.
  */
 private void cleanupAndShutDown() {
-    // Close our floating tool window:
-    SwingUtilities.invokeAndWait(() -> {
-        myToolWindow.close();
-    });
+    try {
+        // Close our floating tool window:
+        SwingUtilities.invokeAndWait(() -> {
+            myToolWindow.close();
+        });
+    }
+    catch (Exception e) {
+        logger.error("Caught exception while shutting down: " 
+                + e.getMessage(), e);
+    }
 
     // ... the rest of your shutdown code
 }
@@ -75,8 +81,13 @@ is that the `UpdateManager` will terminate the application as soon as the last s
 returns. If you use `invokeLater()`, it is highly likely that your shutdown code will not
 get a chance to execute before the application is terminated.
 
-Note also that `UpdateManager` will only wait for 30 seconds before force-terminating
-all shutdown hook threads. Relying on a popup to ask the user a question may cause your shutdown hook
+Failure to properly marshal UI interactions to the Event Dispatch Thread may cause unpredictable behavior, including
+deadlocks. In the worst case, the UI may become completely unresponsive until `UpdateManager` hits its
+timeout (described below).
+
+`UpdateManager` will only wait for 30 seconds before force-terminating
+all shutdown hook threads. This value is not currently configurable.
+Relying on a popup to ask the user a question may cause your shutdown hook
 to exceed that time limit. Consider forcing a silent save without user interaction, or at least
 providing a visible timer on your popup to let the user know that they must respond quickly.
 If your hook has not completed within the time limit, those unsaved changes may be lost!
