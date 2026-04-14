@@ -48,6 +48,40 @@ Note that this is not a replacement for your normal cleanup scheme! The shutdown
 is only invoked when UpdateManager restarts your application, not when your application
 exits normally.
 
+## IMPORTANT NOTE ABOUT THREADING
+
+Shutdown hooks are executed on a worker thread. Most of the time, this is not a problem.
+However, sometimes your cleanup code may need to interact with the UI. For example, perhaps
+you wish to show a dialog to ask the user about committing unsaved changes, or perhaps you
+need to manually close some open windows. In that case, it is **very important** that you
+properly marshal these UI interactions to the Swing Event Dispatch Thread:
+
+```java
+/**
+ * Perform normal shutdown tasks before the application exits.
+ */
+private void cleanupAndShutDown() {
+    // Close our floating tool window:
+    SwingUtilities.invokeAndWait(() -> {
+        myToolWindow.close();
+    });
+
+    // ... the rest of your shutdown code
+}
+```
+
+Note also that we use `invokeAndWait()` here instead of `invokeLater()` - the reason for this
+is that the `UpdateManager` will terminate the application as soon as the last shutdown hook
+returns. If you use `invokeLater()`, it is highly likely that your shutdown code will not
+get a chance to execute before the application is terminated.
+
+Note also that `UpdateManager` will only wait for 30 seconds before force-terminating
+all shutdown hook threads. Relying on a popup to ask the user a question may cause your shutdown hook
+to exceed that time limit. Consider forcing a silent save without user interaction, or at least
+providing a visible timer on your popup to let the user know that they must respond quickly.
+If your hook has not completed within the time limit, those unsaved changes may be lost!
+Application restart cannot be prevented or extended by any shutdown hook.
+
 ## Failing to register a shutdown hook
 
 If you have not registered any shutdown hooks, you will notice a warning issued in the
