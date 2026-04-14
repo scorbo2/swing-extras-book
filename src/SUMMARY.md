@@ -63,6 +63,7 @@
   - [Progress](general/Progress.md)
     - [Formatting](general/ProgressFormatting.md)
   - [MessageUtil](general/MessageUtil.md)
+  - [FallbackExceptionHandler](general/FallbackExceptionHandler.md)
 - [ActionPanel](actionpanel/README.md)
   - [Action type](actionpanel/ActionType.md)
   - [Styling options](actionpanel/Styling.md)
