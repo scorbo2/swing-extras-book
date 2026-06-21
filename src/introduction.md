@@ -7,7 +7,12 @@ to allow developers to very quickly and easily stand up powerful applications wi
 This documentation guide covers the possibilities that `swing-extras` offers that allow you to 
 quickly and easily add useful functionality to your Java Swing applications.
 
-**This guide covers version 2.9.0 of swing-extras from 2026-04-13**
+**This guide covers version 3.0.0 of swing-extras from 2026-06-21**
+
+Note that as of version `3.0.0`, swing-extras requires Java 25 or later:
+- swing-extras 1.0 to 2.3: Java 8
+- swing-extras 2.4 to 2.9: Java 17
+- swing-extras 3.0 and later: Java 25
 
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
@@ -27,7 +32,7 @@ To use the archetype, run the following command:
 mvn archetype:generate \
   -DarchetypeGroupId=ca.corbett \
   -DarchetypeArtifactId=swing-extras-archetype \
-  -DarchetypeVersion=2.9.0 \
+  -DarchetypeVersion=3.0.0 \
   -DgroupId=com.example \
   -DartifactId=my-app \
   -Dversion=1.0.0 \
@@ -35,7 +40,7 @@ mvn archetype:generate \
 ```
 
 Just set the `groupId`, `artifactId`, `version`, and `artifactNamePascalCase` properties appropriately for your application.
-Always use the latest version of the archetype! `2.9.0` is the latest version at the time of this writing, but
+Always use the latest version of the archetype! `3.0.0` is the latest version at the time of this writing, but
 check [Maven Central](https://repo1.maven.org/maven2/ca/corbett/swing-extras-archetype/) for newer versions.
 
 The generated application includes many comments explaining what features were provided for you, and how/where
@@ -51,7 +56,7 @@ then start building swing-extras features and components into your Swing applica
   <dependency>
     <groupId>ca.corbett</groupId>
     <artifactId>swing-extras</artifactId>
-    <version>2.9.0</version>
+    <version>3.0.0</version>
   </dependency>
 </dependencies>
 ```
@@ -66,12 +71,12 @@ cd swing-extras
 mvn package
 
 # Run the built-in demo app:
-java -jar target/swing-extras-2.9.0-jar-with-dependencies.jar
+java -jar target/swing-extras-3.0.0-jar-with-dependencies.jar
 ```
 
 ### Updates, issues, and more information
 
-At the time of this writing, `2.9.0` is the latest version. Use the following links for more information:
+At the time of this writing, `3.0.0` is the latest version. Use the following links for more information:
 
 - [swing-extras on GitHub](https://github.com/scorbo2/swing-extras)
 - Use the [GitHub issues page](https://github.com/scorbo2/swing-extras/issues) to report bugs or request features.
