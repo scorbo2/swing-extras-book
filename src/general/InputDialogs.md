@@ -112,6 +112,7 @@ agreementDialog.setConfirmLabel("I agree");
 agreementDialog.setHelpText("Please read before agreeing");
 agreementDialog.setOverviewText("Please read carefully!");
 agreementDialog.setVisible(true);
+```
 
 The `AgreementDialog` has the same "overview text" and "help text" options as `TextInputDialog`, 
 which work the same way.
