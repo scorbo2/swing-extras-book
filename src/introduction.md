@@ -9,6 +9,11 @@ quickly and easily add useful functionality to your Java Swing applications.
 
 **This guide covers version 3.0.0 of swing-extras from 2026-06-21**
 
+Note that as of version `3.0.0`, swing-extras requires Java 25 or later:
+- swing-extras 1.0 to 2.3: Java 8
+- swing-extras 2.4 to 2.9: Java 17
+- swing-extras 3.0 and later: Java 25
+
 The library jar includes a built-in demo application that offers a brief preview of some of the features and
 components of `swing-extras`:
 
