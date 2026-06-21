@@ -2,9 +2,48 @@
 
 There are a few utility classes available in `swing-extras` to simplify common file-related tasks.
 
+## File and Directory scanning
+
+The `3.0` release introduces two classes to greatly simplify scanning for files and directories in the filesystem:
+
+- `FileScannerThread` - a worker thread that can scan for files with a particular extension, or files from within a list of extensions.
+- `DirectoryScannerThread` - a worker thread that can scan for directories, with optional recursion.
+
+These classes both implement `SimpleProgressWorker` from the [progress package](Progress.md), so they can 
+easily be used with the `MultiProgressDialog` class to provide a progress bar and cancel button to the user
+while the search is in progress. Cancellation is handled by the worker threads, so your code simply needs to
+implement a `CompletionListener` and a `CancelListener` to handle the results:
+
+```java
+// Find all text and Markdown files in a directory (recursion is true by default):
+FileScannerThread scanner = new FileScannerThread(new File("/path/to/search"))
+    .addExtensionsToMatch(List.of(".txt", ".md"))
+    .addCompletionListener(results -> handleResults(results))
+    .addCancelListener(() -> handleCancellation());
+MultiProgressDialog progressDialog = new MultiProgressDialog(parent, "Scanning...");
+progressDialog.runWorker(scanner, true); // run the scan and dispose when finished.
+```
+
+Note that your handlers are invoked on the worker thread! If you need to update the UI from these
+handlers, you must remember to marshal back to the EDT using `SwingUtilities.invokeLater()`.
+
+```java
+public void handleResults(List<File> results) {
+    // It's fine to do heavy IO here, 
+    // as we're still in the worker thread:
+    // Load a file, for example...
+    
+    // Then, update the UI safely:
+    SwingUtilities.invokeLater(() -> {
+        // Update the UI with the results here.
+    });
+}
+```
+
 ## FileSystemUtil
 
-The `FileSystemUtil` class provides several useful static utility methods:
+The `FileSystemUtil` class also provides several useful lower-level static utility methods,
+if you wish to handle the file/directory scanning yourself:
 
 - findFiles/findFilesExcluding/findSubdirectories - perform a search with optional recursion looking for files or directories matching certain criteria
 - extractTextFileFromJar - extract a text file from within a JAR file and return its contents as a String
@@ -66,6 +105,48 @@ public class MyDownloadListener implements DownloadListener {
     }
 }
 ```
+
+## FileWatcher
+
+The `FileWatcher` utility provides a way to monitor a particular file for changes.  It wraps Java's `WatchService` API 
+to provide a simple interface for watching a single file. You can specify a callback to be invoked whenever the file 
+is modified. This is useful if your application is presenting a file for viewing or editing, and you want to be
+aware of external changes to the file. `FileWatcher` is very easy to set up:
+
+```java
+FileWatcher watcher = new FileWatcher(someFile, this::onChange);
+watcher.start(); // starts a worker thread to monitor the file
+watcher.isRunning(); // reports true if the watcher is active
+watcher.stop(); // stops the watcher thread and cleans up.
+```
+
+Your `onChange` handler is any Runnable that will be invoked when the file is changed.
+Note that the handler is invoked on the worker thread, so you should marshal back to the EDT if you need to update the UI:
+
+```java
+public void onChange() {
+    SwingUtilities.invokeLater(() -> {
+        // Update the UI to reflect the file change here.
+    });
+}
+```
+
+If your application wants to save changes to the file, you can temporarily suspend the watcher
+to avoid triggering a change report from your own change:
+
+```java
+watcher.ignoreSelfTriggeredChanges();
+
+// We now have a short window to save our changes (default: 1 second).
+```
+
+You can optionally specify the time for event suspension (the default is 1 second):
+
+```java
+watcher.ignoreSelfTriggeredChanges(2000); // ignore changes for 2 seconds
+```
+
+File watching automatically resumes after the suspension period.
 
 ## TextFileDetector
 
