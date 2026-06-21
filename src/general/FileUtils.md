@@ -137,7 +137,7 @@ to avoid triggering a change report from your own change:
 ```java
 watcher.ignoreSelfTriggeredChanges();
 
-// We now have a few milliseconds to save our changes.
+// We now have a short window to save our changes (default: 1 second).
 ```
 
 You can optionally specify the time for event suspension (the default is 1 second):
